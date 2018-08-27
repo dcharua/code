@@ -1,0 +1,1000 @@
+ 1007  g++  mutex.cpp md5.cpp -o main -pthread
+ 1008  ./main
+ 1009  g++  mutex.cpp md5.cpp -o main -pthread
+ 1010  ./main
+ 1011  g++  mutex.cpp md5.cpp -o main -pthread
+ 1012  ./main
+ 1013  g++  mutex.cpp md5.cpp -o main -pthread
+ 1014  ./main
+ 1015  g++  mutex.cpp md5.cpp -o main -pthread
+ 1016  ./main
+ 1017  g++  mutex.cpp md5.cpp -o main -pthread
+ 1018  ./main
+ 1019  g++  mutex.cpp md5.cpp -o main -pthread
+ 1020  ./main
+ 1021  g++  mutex.cpp md5.cpp -o main -pthread
+ 1022  ./main
+ 1023  g++  mutex.cpp md5.cpp -o main -pthread
+ 1024  ./main
+ 1025  g++  mutex.cpp md5.cpp -o main -pthread
+ 1026  ./main
+ 1027  g++  mutex.cpp md5.cpp -o main -pthread
+ 1028  8efad6deb6289843a8b8c446e2737709
+ 1029  ./main
+ 1030  g++  mutex.cpp md5.cpp -o main -pthread
+ 1031  ./main
+ 1032  cd Code
+ 1033  cd ..
+ 1034  git add .
+ 1035  git commit -m "18/10/17"
+ 1036  git push
+ 1037  sudo apt update && sudo apt dist-upgrade
+ 1038  cd
+ 1039  ls
+ 1040  historu
+ 1041  history
+ 1042  sudo apt update && sudo apt dist-upgrade
+ 1043  sudo nano /etc/default/grub
+ 1044  sudo update-grub
+ 1045  sudo apt-get install --reinstall ubuntu-desktop
+ 1046  sudo apt autoremove
+ 1047  sudo apt-get install xserver-xorg-input-libinput
+ 1048  sudo apt install xserver-xorg-input-synaptics
+ 1049  sudo apt remove xserver-xorg-input-synaptics
+ 1050  sudo apt install xserver-xorg-input-synaptics
+ 1051  cat /proc/bus/input/devices > ~/devices
+ 1052  sudo apt install --reinstall xserver-xorg-input-synaptics
+ 1053  sudo reboot
+ 1054  sudo add-apt-repository ppa:papirus/papirus
+ 1055  sudo apt update && sudo apt install papirus-icon-theme
+ 1056  sudo apt-get install chrome-gnome-shell
+ 1057  cd Documents/Code/C/Mutex/
+ 1058  ./main
+ 1059  less /proc/bus/input/devices
+ 1060  ls
+ 1061  xinput
+ 1062  sudo rmmod i2c_hid
+ 1063  sudo modprobe i2c_hid
+ 1064  sudo rmmod i2c_hid
+ 1065  sudo modprobe i2c_hid
+ 1066  sudo  /etc/default/grub
+ 1067  sudo nano /etc/default/grub
+ 1068  sudo update-grub
+ 1069  echo "blacklist i2c_hid" | sudo tee /etc/modprobe.d/i2c-hid.conf
+ 1070  sudo depmod -a
+ 1071  sudo update-initramfs -u
+ 1072  echo "synaptics_i2c" | sudo tee -a /etc/modules
+ 1073  less /proc/bus/input/devices
+ 1074  cd Documents/Code/Rails/seed/
+ 1075  heroku console
+ 1076  sudo apt-get remove --purge libreoffice*
+ 1077  sudo apt-get clean
+ 1078  sudo apt-get autoremove
+ 1079  less /proc/bus/input/devices
+ 1080  n=10
+ 1081  echo $n
+ 1082  echo -e "An apple a day keeps away \a\t\tdoctor\n"
+ 1083  echo "An apple a day keeps away \a\t\tdoctor\n"
+ 1084  expr 1 + 3
+ 1085  echo `expr 6 + 3`
+ 1086  expr 10 \* 3
+ 1087  echo "Today is `date`"
+ 1088  echo #?
+ 1089  echo $?
+ 1090  $ vi sayH
+ 1091  #
+ 1092  #Script to read your name from key-board
+ 1093  #
+ 1094  echo "Your first name please:"
+ 1095  read fname
+ 1096  chmod 755 sayH
+ 1097  ls
+ 1098  date;who 
+ 1099  date|who 
+ 1100  date who 
+ 1101  cd Documents/Code/Shell/
+ 1102  la
+ 1103  ls
+ 1104  ./variables
+ 1105  ls -l
+ 1106  chmod -x variables 
+ 1107  ./variables
+ 1108  ls -l
+ 1109  chmod 755 variables 
+ 1110  ./variables
+ 1111  ./variables hellow
+ 1112  ./variables hellow ddd
+ 1113  $ ls / -R | wc -l &
+ 1114  ls
+ 1115  $ ls / -R | wc -l
+ 1116  $ ls / -R | wc -l &
+ 1117  ls
+ 1118  $ ls / -R | wc -l &
+ 1119  ls
+ 1120  lsps
+ 1121  ps
+ 1122  ps -sg
+ 1123  ps -ag
+ 1124  top
+ 1125  bc
+ 1126  cd Documents/Code/Shell/
+ 1127  chmod 755 isnum
+ 1128  ./isnum
+ 1129  ./isnum 1
+ 1130  ./isnum 1 2
+ 1131  ./isnum -1 2
+ 1132  chmod 755 testfor
+ 1133  ./testfir
+ 1134  ./testfor
+ 1135  exit
+ 1136  ./testfor
+ 1137  chmod 755 mtable 
+ 1138  ./mtable 
+ 1139  ./mtable 1
+ 1140  ./mtable 3
+ 1141  ./mtable 3 2
+ 1142  env|more
+ 1143  cd Downloads/
+ 1144  ls
+ 1145  cd LibreOffice_5.4.2_Linux_x86-64_deb/
+ 1146  ls
+ 1147  cd LibreOffice_5.4.2.2_Linux_x86-64_deb/
+ 1148  cd DEBS/
+ 1149  sudo dpkg -i *.deb
+ 1150  cd Documents/Code/Rails/seed/
+ 1151  rails s
+ 1152  cd Documents/Code/Rails/seed/
+ 1153  rails s
+ 1154  cd Documents/Code/Rails/seed/
+ 1155  rails s
+ 1156  bundle install
+ 1157  rails s
+ 1158  sudo apt-get prudge netbeans
+ 1159  sudo apt-get purdge netbeans
+ 1160  sudo apt-get remove 
+ 1161  sudo apt-get purdge NetBeans
+ 1162  sudo apt-get remove NetBeans
+ 1163  apt list --installed
+ 1164  spkh -i
+ 1165  dpkh -i
+ 1166  dpkg -i
+ 1167  sudo dpkg -i
+ 1168  history
+ 1169  cd Documents/Code/Shell/
+ 1170  ./variables 
+ 1171  ./variables hola luis
+ 1172  ./mtable hola luis
+ 1173  ./mtable 2
+ 1174  ./isnum
+ 1175  ./isnum 1
+ 1176  ./isnum -1
+ 1177  ls -l
+ 1178  chmod +w mtable
+ 1179  ls -l
+ 1180  chmod u+w mtable
+ 1181  ls -l
+ 1182  chmod o+w mtable
+ 1183  ls -l
+ 1184  chmod g+w mtable
+ 1185  ls -l
+ 1186  chmod u-w mtable
+ 1187  ls -l
+ 1188  chmod u+w mtable
+ 1189  ls -l
+ 1190  chmod 755 mtable
+ 1191  ls -l
+ 1192  passwd -i usrexam
+ 1193  passwd -s usrexam
+ 1194  passwd -S usrexam
+ 1195  sudo passwd -S usrexam
+ 1196  umask
+ 1197  umask man
+ 1198  man umask
+ 1199  uit
+ 1200  umask(222)
+ 1201  umask(122)
+ 1202  umask("122")
+ 1203  umask('122')
+ 1204  umask 122
+ 1205  umask
+ 1206  mkdir DirPermisos
+ 1207  ls -l
+ 1208  umask
+ 1209  umask 112
+ 1210  mkdir DirPermisos2
+ 1211  ls -l
+ 1212  umask
+ 1213  ´expr 8 * 2´
+ 1214  ´expr 8 /* 2´
+ 1215  echo ´expr 8 /* 2´
+ 1216  echo ´expr 8 * 2´
+ 1217  expr 8 +2
+ 1218  expr 8 * 2
+ 1219  expr 8 /* 2
+ 1220  expr 8 */ 2
+ 1221  expr 10 \* 3
+ 1222  touch SegundoParcial
+ 1223  ls
+ 1224  cd SegundoParcial
+ 1225  ls
+ 1226  mkdir SegundoParcial
+ 1227  cd SegundoParcial/
+ 1228  cp "Hola clase de Sistemas Operativos!" > Mitexto.txt 
+ 1229  "Hola clase de Sistemas Operativos!" > Mitexto.txt 
+ 1230  cat "Hola clase de Sistemas Operativos!" > Mitexto.txt 
+ 1231  cat "Hola clase de Sistemas Operativos!"  Mitexto.txt 
+ 1232  cat MiTexto.txt "Hola clase de Sistemas Operativos!" 
+ 1233  "Hola clase de Sistemas Operativos!" Mitexto.txt
+ 1234  "Hola clase de Sistemas Operativos!"> Mitexto.txt
+ 1235  cat "Hola clase de Sistemas Operativos!"> Mitexto.txt
+ 1236  cat "Hola clase de Sistemas Operativos!" Mitexto.txt
+ 1237  cat Mitexto.txt "HOLA"
+ 1238  cat Mitexto.txt < "HOLA"
+ 1239  echo Mitexto.txt > "HOLA"
+ 1240  echo  "HOLA"> Mitexto.txt
+ 1241  touch Miprograma
+ 1242  ls -l
+ 1243  chmod +x Mitexto.txt
+ 1244  ls -l
+ 1245  chmod -x Mitexto.txt
+ 1246  ls -l
+ 1247  cat Miexto.txt > Otrotexto.txt
+ 1248  cp Miexto.txt > Otrotexto.txt
+ 1249  cp Miexto.txt  Otrotexto.txt
+ 1250  cp Mitexto.txt  Otrotexto.txt
+ 1251  rm Mitexto.txt
+ 1252  cd ..
+ 1253  cp SegundoParcial MiExamen
+ 1254  cp -r SegundoParcial MiExamen
+ 1255  cd  SegundoParcial/
+ 1256  rename Otrotexto.txt Mitexto.txt
+ 1257  mv Otrotexto.txt Mitexto.txt
+ 1258  cd ~
+ 1259  ls -l
+ 1260  env| grep DISPLAY
+ 1261  env| grep HOME
+ 1262  env| grep HOST
+ 1263  env| grep HO
+ 1264  env| grep XDG
+ 1265  env| grep PATH
+ 1266  cat /etc/shells
+ 1267  env| grep SHELL
+ 1268  env| grep TERM
+ 1269  env| grep USER
+ 1270  useradd usrexam
+ 1271  sudo useradd usrexam 
+ 1272  chown dcharua usrexam
+ 1273  chown userexam SegundoParcial 
+ 1274  chown usrexam SegundoParcial 
+ 1275  sudo chown usrexam SegundoParcial 
+ 1276  passwd labso2017 usrexam
+ 1277  passwd usrexam
+ 1278  su passed
+ 1279  su usrexam
+ 1280  su
+ 1281  su root
+ 1282  sudo apt-get update
+ 1283  sudo apt-get upgrade
+ 1284  cd Documents/Code/Shell/
+ 1285  chmod 755 find.sh
+ 1286  ./ find.sh
+ 1287  ./ find
+ 1288  ./find
+ 1289  ./find.sh
+ 1290  grep 
+ 1291  29
+ 1292  down vote
+ 1293  accepted
+ 1294  grep sombra Archivo.txt | wc -l
+ 1295  ./find sombra Archivo.txt
+ 1296  ./find.sh sombra Archivo.txt
+ 1297  ./find sombra
+ 1298  ./find.sh sombra
+ 1299  grep -o Archivo.txt
+ 1300  grep -o Archivito.txt
+ 1301  sort Archivito.txt | uniq --coun
+ 1302  sort Archivito.txt | uniq --count
+ 1303  sort Archivito.txt | uniq -c | grep -v '^ *1 '
+ 1304  sort Archivito.txt | uniq --count
+ 1305  sort -n Archivito.txt | uniq --count
+ 1306  cat filename | xargs -n1 | sort | uniq -c > newfilename
+ 1307  cat Archivito.txt | xargs -n1 | sort 
+ 1308  cat filename | xargs -n1 | sort | uniq -c 
+ 1309  cat Archivito.txt | xargs -n1 | sort | uniq -c 
+ 1310  chmod 755 examen.sh
+ 1311  ./examen.sh
+ 1312  su
+ 1313  userdelete usrexam
+ 1314  userdelate usrexam
+ 1315  userdel usrexam
+ 1316  sudo userdel usrexam
+ 1317  cd Documents/Code/AyMS/Evaluaciones/evalNaves/
+ 1318  c++ GalaxiaLejana.cpp -o main
+ 1319  ./main
+ 1320  c++ GalaxiaLejana.cpp -o main
+ 1321  ./main
+ 1322  c++ GalaxiaLejana.cpp -o main
+ 1323  ./main
+ 1324  c++ GalaxiaLejana.cpp -o main
+ 1325  ./main
+ 1326  c++ GalaxiaLejana.cpp -o main
+ 1327  ./main
+ 1328  c++ GalaxiaLejana.cpp -o main
+ 1329  ./main
+ 1330  c++ GalaxiaLejana.cpp -o main
+ 1331  ./main
+ 1332  c++ GalaxiaLejana.cpp -o main
+ 1333  ./main
+ 1334  c++ GalaxiaLejana.cpp -o main
+ 1335  ./main
+ 1336  c++ GalaxiaLejana.cpp -o main
+ 1337  ./main
+ 1338  c++ GalaxiaLejana.cpp -o main
+ 1339  ./main
+ 1340  c++ GalaxiaLejana.cpp -o main
+ 1341  ./main
+ 1342  c++ GalaxiaLejana.cpp -o main
+ 1343  ./main
+ 1344  c++ GalaxiaLejana.cpp -o main
+ 1345  ./main
+ 1346  c++ GalaxiaLejana.cpp -o main
+ 1347  ./main
+ 1348  c++ GalaxiaLejana.cpp -o main
+ 1349  ./main
+ 1350  c++ GalaxiaLejana.cpp -o main
+ 1351  ./main
+ 1352  c++ GalaxiaLejana.cpp -o main
+ 1353  ./main
+ 1354  c++ GalaxiaLejana.cpp -o main
+ 1355  ./main
+ 1356  c++ GalaxiaLejana.cpp -o main
+ 1357  ./main
+ 1358  c++ GalaxiaLejana.cpp -o main
+ 1359  ./main
+ 1360  c++ GalaxiaLejana.cpp -o main
+ 1361  ./main
+ 1362  c++ GalaxiaLejana.cpp -o main
+ 1363  ./main
+ 1364  c++ GalaxiaLejana.cpp -o main
+ 1365  ./main
+ 1366  c++ GalaxiaLejana.cpp -o main
+ 1367  ./main
+ 1368  c++ GalaxiaLejana.cpp -o main
+ 1369  ./main
+ 1370  c++ GalaxiaLejana.cpp -o main
+ 1371  ./main
+ 1372  c++ GalaxiaLejana.cpp -o main
+ 1373  ./main
+ 1374  c++ GalaxiaLejana.cpp -o main
+ 1375  ./main
+ 1376  cd ..
+ 1377  git add .
+ 1378  git commit -m "examen p2"
+ 1379  git push
+ 1380  c++ GalaxiaLejana.cpp -o main
+ 1381  cd Evaluaciones/evalNaves/
+ 1382  c++ GalaxiaLejana.cpp -o main
+ 1383  ./main
+ 1384  c++ GalaxiaLejana.cpp -o main
+ 1385  ./main
+ 1386  c++ GalaxiaLejana.cpp -o main
+ 1387  ./main
+ 1388  c++ GalaxiaLejana.cpp -o main
+ 1389  ./main
+ 1390  cd ..
+ 1391  git add .
+ 1392  git commit -m "more player in EXP2"
+ 1393  git push
+ 1394  cd Documents/Code/Octave/
+ 1395  cd machineLearning/
+ 1396  machine-learning-ex3
+ 1397  ls
+ 1398  cd machine-learning-ex3
+ 1399  ls
+ 1400  cd ex3
+ 1401  ls
+ 1402  octave --no-gui
+ 1403  sumbit() exit
+ 1404  octave --no-gui
+ 1405  fillezila
+ 1406  filezilla
+ 1407  exit
+ 1408  cd Documents/Code/Rails/seed/
+ 1409  heroku run c
+ 1410  heroku run console
+ 1411  heroku addons:create pgstudio
+ 1412  cd Documents/Code/Shell/
+ 1413  .examen.sh
+ 1414  ./examen.sh
+ 1415  ./find.sh
+ 1416  ./find.sh la
+ 1417  ./find.sh amor
+ 1418  ./find.sh Amor
+ 1419  ./find.sh mor
+ 1420  ./find.sh amor
+ 1421  ./examen.sh
+ 1422  cd ..
+ 1423  cd Octave/machineLearning/
+ 1424  ls
+ 1425  cd machine-learning-ex3
+ 1426  ls
+ 1427  cd ex3
+ 1428  octave --no-gui
+ 1429  sudo useradd -d /Documents usrhomework
+ 1430  cut -d: -f1 /etc/passwd
+ 1431  su usrhomework
+ 1432  sudo useradd -U  -d /Documents usrhomework -c "es para un ejercicio"
+ 1433  sudo useradd -U  -d /Documents usrhomework1 -c "es para un ejercicio"
+ 1434  compgen -u
+ 1435  compgen -g
+ 1436  sudo sudo useradd -U  -d /Documents usrhomework1 -c "es para un ejercicio"
+ 1437  sudo sudo useradd -U  -d /Documents usrhomework2 -c "es para un ejercicio"
+ 1438  sudo userdel usrhomework
+ 1439  sudo userdel usrhomework1
+ 1440  compgen -u
+ 1441  sudo userdel usrhomework2
+ 1442  compgen -u
+ 1443  compgen -g
+ 1444  cd Documents/Code/Rails/seed/
+ 1445  cd Documents/Code/Rails/seed
+ 1446  run heroku console
+ 1447  heroku run console
+ 1448  heroku run rails c
+ 1449  groupadd Parents Childer Soho
+ 1450  sudo groupadd Parents Childer Soho
+ 1451  sudo echo Parents Children Soho | xargs -n 1 groupadd 
+ 1452  sudo echo Parents Children Soho | xargs -n 1 groupadd -r 
+ 1453  for group in Parents Children Soho;do groupadd ${group};done
+ 1454  sudo for group in Parents Children Soho;do groupadd ${group};done
+ 1455  su root
+ 1456  su Paul
+ 1457  su root
+ 1458  su Alice
+ 1459  su Paul
+ 1460  su Jane
+ 1461  su 
+ 1462  compgen -u
+ 1463  su
+ 1464  su Paul
+ 1465  su
+ 1466  su Paul
+ 1467  su
+ 1468  cd Documents/Code/Shell/
+ 1469  ls
+ 1470  ls -l
+ 1471  chmod 755 practica2.sh
+ 1472  ls -l
+ 1473  su 
+ 1474  filezilla
+ 1475  cd Documents/Code/Octave/machineLearning/machine-learning-ex4/
+ 1476  ls
+ 1477  cd ex4
+ 1478  ls
+ 1479  octave --no-gui
+ 1480  cd Documents/Code/Shell/
+ 1481  su 
+ 1482  su paul
+ 1483  su Paul
+ 1484  su 
+ 1485  su Paul
+ 1486  su Alice
+ 1487  su 
+ 1488  cat > si.txt
+ 1489  cat si.txt >s2.txt
+ 1490  cat < si.txt 
+ 1491  rm si.txt
+ 1492  rm s2.txt
+ 1493  cat ts
+ 1494  cat Archivito.txt
+ 1495  cat -n  Archivito.txt
+ 1496  cat -n  Archivito.txt| xargs -n1
+ 1497  cat  Archivito.txt| xargs -n1 | uniq -c
+ 1498  cat  Archivito.txt| xargs -n1|sort | uniq -c
+ 1499  cat  Archivito.txt| xargs -n1|sort
+ 1500  cat  Archivito.txt| xargs -n1| uniq
+ 1501  cat  Archivito.txt| xargs -n1| uniq -c
+ 1502  cat  Archivito.txt| xargs -n1| sort |uniq -c
+ 1503  cat  Archivito.txt| xargs -n1| sort |uniq 
+ 1504  cat -n  Archivito.txt| xargs -n1| sort |uniq 
+ 1505  chmod 755 multDigitos.sh 
+ 1506  ./multDigitos.sh 
+ 1507  ./multDigitos.sh 1123
+ 1508  ./multDigitos.sh 
+ 1509  ./multDigitos.sh 2323
+ 1510  ./multDigitos.sh 123
+ 1511  ./multDigitos.sh 1234
+ 1512  ./multDigitos.sh 1234w
+ 1513  ./multDigitos.sh 1234
+ 1514  ./multDigitos.sh 1234w
+ 1515  ./multDigitos.sh 1234.1
+ 1516  ./multDigitos.sh 1234.
+ 1517  ./multDigitos.sh 12345
+ 1518  ./multDigitos.sh 123456
+ 1519  ./multDigitos.sh 1234567
+ 1520  ./multDigitos.sh 12345678
+ 1521  ./multDigitos.sh 123456789
+ 1522  ./multDigitos.sh 1234567890
+ 1523  ls -l
+ 1524  exit
+ 1525  ls -l
+ 1526  chown dcharua SegundoParcial
+ 1527  chown  SegundoParcial
+ 1528  chown dcharua 1001 SegundoParcial
+ 1529  ls -l
+ 1530  sudo
+ 1531  sudo chown dcharua SegundoParcial
+ 1532  ls -l
+ 1533  sudo apt-purde wavebox
+ 1534  history | grep apt-p
+ 1535  history | grep pur
+ 1536  sudo apt-get purdge wavebox
+ 1537  sudo apt-get purdge Wavebox
+ 1538  sudo apt-get remove Wavebox
+ 1539  sudo apt-get remove wavebox
+ 1540  sudo apt-get upgrade
+ 1541  sudo apt-get update
+ 1542  sudo apt-get upgrade
+ 1543  shutdown
+ 1544  shutdown now
+ 1545  cd Documents/Code/Shell/
+ 1546  ./multDigitos.sh 
+ 1547  ./multDigitos.sh 13444
+ 1548  ./multDigitos.sh 1234
+ 1549  ./multDigitos.sh 12342
+ 1550  shutdown now
+ 1551  cd Documents/Code/Octave/machineLearning
+ 1552  ls
+ 1553  cd machine-learning-ex3/ex3
+ 1554  lz
+ 1555  ls
+ 1556  octave --no-gui
+ 1557  exit
+ 1558  which java
+ 1559  whereis java
+ 1560  cd Documents/Code/AyMS/
+ 1561  ls
+ 1562  cd Java/
+ 1563  ls
+ 1564  cd proyecto_final_MOD/
+ 1565  git clone https://github.com/Mricoz/proyecto_final_MOD.git
+ 1566  git add .
+ 1567  git commit .m "first commit"
+ 1568  git commit -m "first commit"
+ 1569  git push
+ 1570  git submodule add https://github.com/Mricoz/proyecto_final_MOD.git
+ 1571  git add .
+ 1572  git commit -m "first commit"
+ 1573  cd ~
+ 1574  cd Documents/
+ 1575  cd proyecto_final_MOD/
+ 1576  git clone https://github.com/Mricoz/proyecto_final_MOD.git
+ 1577  git add .
+ 1578  git clone https://github.com/Mricoz/proyecto_final_MOD.git
+ 1579  git clone https://github.com/Mricoz/proyecto_final_MOD.git .
+ 1580  git clone https://github.com/Mricoz/proyecto_final_MOD.git.
+ 1581  git clone https://github.com/Mricoz/proyecto_final_MOD.git
+ 1582  git push
+ 1583  git push -f
+ 1584  git clone -f https://github.com/Mricoz/proyecto_final_MOD.git
+ 1585  git clone -F https://github.com/Mricoz/proyecto_final_MOD.git
+ 1586  cd Documents/Code/Octave/machineLearning/machine-learning-ex5
+ 1587  ls
+ 1588  cd ex5
+ 1589  octave --no-gui
+ 1590  cd Documents/Code/
+ 1591  cd AyMS/
+ 1592  ls
+ 1593  cd Java/proyecto_final_MOD/
+ 1594  ls
+ 1595  git clone https://github.com/Mricoz/proyecto_final_MOD
+ 1596  sudo apt-get install apache2
+ 1597  sudo apt-get install mysql-server
+ 1598  sudo apt-get install php5 libapache2-mod-php5
+ 1599  sudo apt-get install php
+ 1600  sudo apt-get install libapache2-mod-php
+ 1601  sudo service apache2 restart
+ 1602  sudo chown $USER /var/www/html -R
+ 1603  sudo chown $USER /var/www -R
+ 1604  cd..
+ 1605  cd ..
+ 1606  cd var
+ 1607  cd www
+ 1608  ls
+ 1609  cd html
+ 1610  cd proyecto_final_MOD/
+ 1611  git clone
+ 1612  git clone https://github.com/Mricoz/proyecto_final_MOD
+ 1613  git add .
+ 1614  git init https://github.com/Mricoz/proyecto_final_MOD
+ 1615  git add .
+ 1616  rm -fr .git
+ 1617  git clone https://github.com/Mricoz/proyecto_final_MOD.git
+ 1618  cd
+ 1619  cd /var/www/html
+ 1620  ls
+ 1621  git clone https://github.com/Mricoz/proyecto_final_MOD
+ 1622  git add .
+ 1623  cd proyecto_final_MOD
+ 1624  git add .
+ 1625  git commit "add habitacion & personal folders plus cleaning"
+ 1626  git commit -m "add habitacion & personal folders plus cleaning"
+ 1627  git push
+ 1628  cd Documents/Code/Rails/seed/
+ 1629  rails s
+ 1630  cd /var/www/html
+ 1631  cd proyecto_final_MOD
+ 1632  git add .
+ 1633  git commit -m "index.php add"
+ 1634  git push
+ 1635  git add .
+ 1636  git commit -m "plugins"
+ 1637  git push
+ 1638  cd /var/www/html/proyecto_final_MOD
+ 1639  git add .
+ 1640  git commit -m "alumnos index & show"
+ 1641  git push
+ 1642  cd /var/www/html/proyecto_final_MOD
+ 1643  git status
+ 1644  git pull
+ 1645  sudo apt-get install phpmyadmin
+ 1646  sudo service apache2 restart
+ 1647  sudo nano /etc/apache2/apache2.conf
+ 1648  sudo service apache2 restart
+ 1649  mysqladmin -u
+ 1650  mysqladmin -u root
+ 1651  mysqladmin -u root password TB12nedcf77-
+ 1652  mysqladmin -u root -p password TB12nedcf77-
+ 1653  sudo /etc/init.d/mysql stop
+ 1654  sudo mysqld --skip-grant-tables &
+ 1655  mysql -u root mysql
+ 1656  mysqld_safe --skip-grant-tables &
+ 1657  sudo mysqld_safe --skip-grant-tables &
+ 1658  /etc/my.cnf
+ 1659  /etc
+ 1660  cd /etc
+ 1661  my.cnf
+ 1662  ./my.cnf
+ 1663  /mysql
+ 1664  cd /mysql
+ 1665  ls
+ 1666  cd mysql
+ 1667  ./my.cnf
+ 1668  chmod 775 my.cnf
+ 1669  sudo mysql
+ 1670  mysqladmin -u root password root
+ 1671  mysqladmin -u root password 
+ 1672  mysqladmin -u root 
+ 1673  sudo mysqladmin -u root 
+ 1674  mysqladmin -u root password root
+ 1675  sudo mysqladmin -u root password root
+ 1676  sudo service apache2 restart
+ 1677  sudo dpkg-reconfigure phpmyadmin
+ 1678  mysql-server -v
+ 1679  mysql -v
+ 1680  mysql -V
+ 1681  sudo dpkg-reconfigure mysql-server-5.7.20
+ 1682  sudo dpkg-reconfigure mysql-server-5.7
+ 1683  sudo service apache2 reload
+ 1684  sudo mysql -uroot -p
+ 1685  mysql -u phpmyadmin phpmyadmin -p
+ 1686  $sudo mysql -u root
+ 1687  sudo mysql -u root
+ 1688  sudo dpkg-reconfigure phpmyadmin
+ 1689  sudo apt-get purge phpmyadmin
+ 1690  sudo apt-get install phpmyadmin
+ 1691  mysqladmin -u root password 'password'
+ 1692  mysqladmin -u root password 'TB12nedcf77-'
+ 1693  mysqladmin -u root 
+ 1694  mysqladmin -u root p
+ 1695  sudo mysqladmin -u root 
+ 1696  mysql -u root -p
+ 1697  sudo mysql -u root -p
+ 1698  sudo mysql --user=root mysql
+ 1699  sudo mysql -u phpmyadmin -p
+ 1700  mysql -u root -p
+ 1701  mysqladmin -u root password NEWPASSWORD
+ 1702  mysqladmin -u root password TB12nedcf77-
+ 1703  sudo /etc/init.d/mysql stop
+ 1704  sudo mysqld --skip-grant-tables &
+ 1705  mysql -u root -p
+ 1706  sudo mysqld stop
+ 1707  sudo nano /etc/mysql/my.cnf
+ 1708  sudo /etc/init.d/mysql start
+ 1709  sudo /etc/init.d/mysql - root -p start
+ 1710  mysql -u root -p
+ 1711  mysql -u root 
+ 1712  mysql -u root -p
+ 1713  sudo mysqld stop
+ 1714  sudo stop mysql
+ 1715  sudo service mysql stop
+ 1716  sudo mysqld_safe --skip-grant-tables
+ 1717  mysql -u root
+ 1718  sudo service mysql stop
+ 1719  sudo /etc/init.d/mysql stop
+ 1720  sudo mysqld_safe --skip-grant-tables
+ 1721  sudo /etc/init.d/mysql
+ 1722  sudo /etc/init.d/mysql -skip-grant-tables start
+ 1723  mysql -u root
+ 1724  sudo mysql -u root
+ 1725  mysql -u root
+ 1726  sudo find / -type s
+ 1727  sudo /etc/init.d/mysql
+ 1728  sudo /etc/init.d/mysql -skip-grant-tables start
+ 1729  mysql -u root
+ 1730  sudo  service mysql stop
+ 1731  sudo /usr/bin/mysqld_safe --skip-grant-tables &
+ 1732  sss
+ 1733  sudo /usr/bin/mysqld_safe --skip-grant-tables &
+ 1734  sudo /usr/bin/mysqld_safe 
+ 1735  mysql -h localhost
+ 1736  mysql -u root
+ 1737  sudo apt-get --purge remove mysql-server mysql-common mysql-client
+ 1738  sudo apt-get --purge remove mysql-server mysql-client mysql-common mysql-client
+ 1739  sudo apt-get --purge remove mysql-server mysql-client-5.7 mysql-common mysql-client
+ 1740  sudo apt-get install mysql-server mysql-common mysql-client
+ 1741  mysql -u root -p
+ 1742  sudo dpkg-reconfigure phpmyadmin
+ 1743  history | grep spkg
+ 1744  history | grep dpkg
+ 1745  history | grep prudge
+ 1746  history | grep purdge
+ 1747  sudo apt-get purge phpmyadmin
+ 1748  sudo service apache2 reload
+ 1749  cd /var/www/html/proyecto_final_MOD
+ 1750  git add .
+ 1751  git commit -m "registros"
+ 1752  git push
+ 1753  git status
+ 1754  git pull
+ 1755  git add .
+ 1756  git commit -m "visitas"
+ 1757  git push
+ 1758  cd /var/www/html/proyecto_final_MOD
+ 1759  git status
+ 1760  git add .
+ 1761  git commit -m "ausencias y lista"
+ 1762  git push
+ 1763  git add .
+ 1764  git commit -m "guardias"
+ 1765  git push
+ 1766  git add .
+ 1767  git commit -m "habitaciones"
+ 1768  git push
+ 1769  cd /var/www/html/proyecto_final_MOD
+ 1770  git pull
+ 1771  git stuts
+ 1772  git status
+ 1773  git add .
+ 1774  git commit -m "navbar"
+ 1775  git push
+ 1776  git status
+ 1777  git push
+ 1778  git pull
+ 1779  git push
+ 1780  git pull
+ 1781  git commit -m "marge"
+ 1782  git add .
+ 1783  git commit -m "marge"
+ 1784  git push
+ 1785  git pull
+ 1786  git add .
+ 1787  git commit -m "actividades"
+ 1788  git push
+ 1789  git pull
+ 1790  git push
+ 1791  git add .
+ 1792  git commit -m "intento de prefecto"
+ 1793  git push
+ 1794  git add .
+ 1795  git commit -m "te regreso el root"
+ 1796  git push
+ 1797  git add .
+ 1798  git commit -m "add prefecto"
+ 1799  git push
+ 1800  git add .
+ 1801  git commit -m "show actividades index"
+ 1802  git push
+ 1803  git add .
+ 1804  git commit -m "guardias fix"
+ 1805  git push
+ 1806  git pull
+ 1807  git push
+ 1808  git add .
+ 1809  git commit -m "index prefectos"
+ 1810  git push
+ 1811  git pull
+ 1812  git status
+ 1813  cd /var/www/html/proyecto_final_MOD
+ 1814  git pull
+ 1815  php -v
+ 1816  git add .
+ 1817  git commit -m "prefectos show"
+ 1818  git push
+ 1819  git pull
+ 1820  git push
+ 1821  git pull
+ 1822  git add .
+ 1823  git push
+ 1824  git pull
+ 1825  git add .
+ 1826  git pull
+ 1827  git commit -m "prefectos index"
+ 1828  git push
+ 1829  git pull
+ 1830  git push
+ 1831  git pull
+ 1832  cd /var/www/html/proyecto_final_MOD
+ 1833  git pull
+ 1834  php -v
+ 1835  git add .
+ 1836  git commit -m "prefectos show"
+ 1837  git push
+ 1838  git pull
+ 1839  git push
+ 1840  git pull
+ 1841  git add .
+ 1842  git push
+ 1843  git pull
+ 1844  git add .
+ 1845  git pull
+ 1846  git commit -m "prefectos index"
+ 1847  git push
+ 1848  git pull
+ 1849  git push
+ 1850  git pull
+ 1851  change -l
+ 1852  chage -l
+ 1853  chage -l dcharua
+ 1854  cd Documents/
+ 1855  grep -l Daniel
+ 1856  cd Universidad/
+ 1857  touch text.txt
+ 1858  ls
+ 1859  cat hola > text.txt
+ 1860  hola > text.txt
+ 1861  cat text.txt hola como te va
+ 1862  cat text.txt > "hola como te va"
+ 1863  ./text.txt
+ 1864  chmod 755 text.txt
+ 1865  ls -l
+ 1866  chmod 775 text.txt
+ 1867  ls -l
+ 1868  ./text.txt
+ 1869  cat text.txt
+ 1870  ./text.txt
+ 1871  text.txt
+ 1872  cat text
+ 1873  cat text.txt
+ 1874  cat text2
+ 1875  cat > text2
+ 1876  cat text2
+ 1877  ls -l
+ 1878  cat text2 >> Muy bien
+ 1879  cat text2 >> "Muy bien"
+ 1880  cat text2
+ 1881  cat text2 >> "esto"
+ 1882  cat text2
+ 1883  cat "ahora si" >> text2
+ 1884  cat <text2 
+ 1885  cat text2 
+ 1886  cat "si "<text2 
+ 1887  grep estas text2
+ 1888  grep -l estas text2
+ 1889  grep -L estas text2
+ 1890  grep -c estas text2
+ 1891  grep -n estas text2
+ 1892  grep -w estas text2
+ 1893  grep -w hola text2
+ 1894  grep hola text2
+ 1895  grep Hola 
+ 1896  grep -h ".la" text2
+ 1897  grep -h "la" text2
+ 1898  grep -h la text2
+ 1899  grep la text2
+ 1900  grep -h '.la' text2
+ 1901  grep -h 'la$' text2
+ 1902  grep -h 'as$' text2
+ 1903  grep -h '^as' text2
+ 1904  grep -h '^Ho' text2
+ 1905  cd ..
+ 1906  cd Code/Shell/
+ 1907  cat Archivito.txt | xargs -n1 | sort | uniq -c 
+ 1908  cat Archivito.txt | xargs -n1  | uniq -c 
+ 1909  cat Archivito.txt | xargs -n1  
+ 1910  cat Archivito.txt | xargs -n1 | sort
+ 1911  cat Archivito.txt | xargs -n1 | sort 
+ 1912  cat Archivito.txt | fmt -w1 | sort | uniq -c 
+ 1913  cat Archivito.txt | xargs -n1 | sort | uniq -c 
+ 1914  grep [ah] Archivito.txt 
+ 1915  grep [ahu] Archivito.txt 
+ 1916  grep -c [ahu] Archivito.txt 
+ 1917  grep -c mied[oa] Archivito.txt 
+ 1918  grep  mied[oa] Archivito.txt 
+ 1919  grep [^ah] Archivito.txt 
+ 1920  cd /var/www/html/proyecto_final_MOD
+ 1921  git pull
+ 1922  man passed
+ 1923  man passwd
+ 1924  man usradd
+ 1925  usradd man
+ 1926  useradd man
+ 1927  man useradd
+ 1928  cd Documents/Code/Shell/
+ 1929  at now < at.sh
+ 1930  chmod 775 usuariosExamen.sh 
+ 1931  ls -l
+ 1932  cd Documents/
+ 1933  history > ExamenFinal.txt
+ 1934  history > ExamenFinal.txt at 8:51
+ 1935  history > ExamenFinal.txt at 08:52
+ 1936  history > ExamenFinal.txt at 08:52 hours&
+ 1937  history > ExamenFinal.txt at 08:53 AM
+ 1938  history > ExamenFinal.txt at 8:53 AM
+ 1939  who
+ 1940  last
+ 1941  -w
+ 1942  whois
+ 1943  whoami
+ 1944  who -b
+ 1945  last reboot
+ 1946  history > ExamenFinal2.txt at 8:59 AM
+ 1947  history > ExamenFinal2.txt at8:59 AM
+ 1948  history > ExamenFinal2.txt at 8:59 AM Today
+ 1949  at 9:00 AM history > ExamenFinal2.txt 
+ 1950  install at
+ 1951  sudo apt install at
+ 1952  at 9:00 AM history > ExamenFinal2.txt 
+ 1953  at now + 1 history > ExamenFinal2.txt 
+ 1954  history > ExamenFinal2.txt at now + 1
+ 1955  at now + 1 grep a text.tx
+ 1956  at now + 1 grep a text.txt
+ 1957  man at
+ 1958  at now + 1 cd Code
+ 1959  cd Code/Shell/
+ 1960  ls -l
+ 1961  chmod 775 at.sh 
+ 1962  ./at.sh
+ 1963  at now < at.sh
+ 1964  at 10:10AM < at.sh
+ 1965  chmod 775 Joins.sh 
+ 1966  ./Joins Archivo1.txt Archivo2.txt
+ 1967  ./Joins.sh Archivo1.txt Archivo2.txt
+ 1968  grep -e “^A?[0-9]{8}@itesm.mx” Archivo1.txt
+ 1969  grep -E “^A?[0-9]{8}@itesm.mx” Archivo1.txt
+ 1970  grep  “^A?[0-9]{8}@itesm.mx” Archivo1.txt
+ 1971  grep  '^A?[0-9]{8}@itesm.mx' Archivo1.txt
+ 1972  grep  [0-9]{8}@itesm.mx Archivo1.txt
+ 1973  grep -h  [0-9]{8}@itesm.mx Archivo1.txt
+ 1974  grep -h '[0-9]{8}@itesm.mx' Archivo1.txt
+ 1975  grep -h '[0-9]@itesm.mx' Archivo1.txt
+ 1976  grep -h '[0-9]{0-9}@itesm.mx' Archivo1.txt
+ 1977  grep -h '[0-9]{0,9}@itesm.mx' Archivo1.txt
+ 1978  grep -h '[0-9]{1,9}@itesm.mx' Archivo1.txt
+ 1979  grep -h '[0-9]{1,3}@itesm.mx' Archivo1.txt
+ 1980  grep -h '[0-9]{3}@itesm.mx' Archivo1.txt
+ 1981  grep -h '[0-9]@itesm.mx' Archivo1.txt
+ 1982  grep -h 'A?0[0-9]{7}@itesm.mx' Archivo1.txt
+ 1983  grep -h 'A?0[0-9]{7}@itesm\.mx' Archivo1.txt
+ 1984  grep -h '[0-9]{7}@itesm\.mx' Archivo1.txt
+ 1985  grep -h 'A?0[0-9]{1-9}@itesm\.mx' Archivo1.txt
+ 1986  grep -h 'A?0[0-9]@itesm\.mx' Archivo1.txt
+ 1987  grep -h '[0-9]@itesm\.mx' Archivo1.txt
+ 1988  grep 'A?0[0-9]@itesm\.mx' Archivo1.txt
+ 1989  grep -h '[0-9](@itesm\.mx)' Archivo1.txt
+ 1990  grep -h '[0-9](@itesm\.mx){1}' Archivo1.txt
+ 1991  grep 'A?0[0-9](@itesm\.mx){1}' Archivo1.txt
+ 1992  grep -h 'A?0[0-9](@itesm\.mx){1}' Archivo1.txt
+ 1993  passwd
+ 1994  +d
+ 1995  passwd man
+ 1996  man passwd
+ 1997  man useradd
+ 1998  su
+ 1999  getent passwd
+ 2000  cd Documents/Code/Shell/
+ 2001  at now < at.sh
+ 2002  ./at.sh
+ 2003  history > ExamenFinal.txt
+ 2004  sudo ./at.sh
+ 2005  su 
+ 2006  history > ExamenFinal.txt

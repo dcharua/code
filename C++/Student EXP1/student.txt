@@ -1,0 +1,6 @@
+Luis Math 89 English 78.1 Programing 85 Physics 94.6 History 85.5 Geography 0
+Jose Math 78.5 English 77.1 Programing 71.9 Physics 85.4 History 79.5 Geography 88.2
+Manuel Math 55 English 88.2 Programing 65 Physics 89.9 History 75 Geography 85.2
+Fede Math 70 English 80 Programing 90 Physics 80 History 70 Geography 60
+Daniel Math 85 English 100 Programing 78 Physics 100 History 100 Geography 99
+Mauricio Math 90 English 99.7 Programing 90 Physics 97 History 80 Geography 90
