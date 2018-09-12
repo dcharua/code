@@ -1,0 +1,8 @@
+#lang racket
+(define (dia-siguiente d m a)
+  (if (d < 28)
+      (+ 1 d m a)
+      (d m a)
+      )
+  )
+  

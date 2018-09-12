@@ -14,7 +14,6 @@ float get(matrix *matrix, int i, int j);
 void set(matrix *matrix, int i, int j, float num);
 void delete(matrix *matrix);
 void readData(char filename[], matrix *matrix);
-void getSize(char filename[],  matrix *matrix);
 void multiply(matrix *matrixA, matrix *matrixB, matrix *result);
 void print(matrix *result, char name[]);
 void write(char filename[], matrix *matrix);
