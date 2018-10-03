@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
     scanf("%c",&opt);
     while ((getchar()) != '\n');
   }while (opt != '1' && opt != '2');
-  //Getting user input and clening buffer to prevent errors
+  //Getting user input and cleaning buffer to prevent errors
   printf("\nEnter the name of the file to read from: ");
   scanf("%s", input_file );
   while ((getchar()) != '\n');
@@ -47,7 +47,7 @@ void forkProcess(char *input_file, int key, char *output_file, char opt){
   //file descriptor and pid variables
   int fd[2];
   pid_t pid;
-  //file descriptor error handeler
+  //file descriptor error handler
   if (pipe(fd) == -1){
     kill("Pipe failed\n");
   }
@@ -131,7 +131,6 @@ void readFile(char *input_file, int key, char *output_file, char opt){
 
 //Function to encode text
 void encode(char *text, char *output, int key){
-  //Filling matrix
   int text_size = strlen(text) - 1;
   char encoded_rail[key][text_size];
   //fill rail matrix with an unused character |
