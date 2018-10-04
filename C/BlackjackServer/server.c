@@ -105,27 +105,26 @@ void playBlackjack(int connection_fd){
   char buffer[BUFFER_SIZE], hit;
   //int message_counter = 0;
   int chars_read, pot, players_cards[MAXCARDS], dealers_cards[MAXCARDS],opt,
-  bet, player_sum = 0, dealer_sum = 0, i = 0 , k = 0, hand = 0;
+  bet, player_sum = 0, dealer_sum = 0, i = 0 , k = 0, over21 = 0;
   // Handshake
   receiveMessage(connection_fd, buffer, BUFFER_SIZE);
   sprintf(buffer, "POT");
   sendMessage(connection_fd, buffer, strlen(buffer));
 
-  // Receive the pot from the user
+  // Receive the pot from the user and print
   receiveMessage(connection_fd, buffer, BUFFER_SIZE);
   sscanf(buffer, "%d", &pot);
-  // Start the game by generating the random number
   printf("The player's initial pot is: %d\n", pot);
-
+  //send play signal and recive
   sprintf(buffer, "PLAY?");
   sendMessage(connection_fd, buffer, strlen(buffer));
-
+  //while user has money keep playing otherwise break from game loop
   while (pot > 0){
     receiveMessage(connection_fd, buffer, BUFFER_SIZE);
     sscanf(buffer, "%d", &opt);
     if (opt == 2)
       break;
-    //Dealing initial cards and reciving bet from client
+    //cleaning cards each hand
     memset(players_cards, 0, MAXCARDS);
     memset(dealers_cards, 0, MAXCARDS);
     i = 0; k = 0;
@@ -135,94 +134,101 @@ void playBlackjack(int connection_fd){
     //Deal first card
     players_cards[i++] = dealNSendCard(connection_fd);
     receiveMessage(connection_fd, buffer, BUFFER_SIZE);
-    //Deal second card
+    //Deal second card check if previous card was recived
     if (strncmp(buffer, "RECEIVED", 8) == 0)
       dealers_cards[k++] = dealNSendCard(connection_fd);
     receiveMessage(connection_fd, buffer, BUFFER_SIZE);
-    //Deal third card
+    //Deal third card check if previous card was recived
     if (strncmp(buffer, "RECEIVED", 8) == 0)
       players_cards[i++] = dealNSendCard(connection_fd);
     receiveMessage(connection_fd, buffer, BUFFER_SIZE);
-    //Deal forth card
+    //Deal forth card check if previous card was recived
     if (strncmp(buffer, "RECEIVED", 8) == 0)
       dealers_cards[k++] = dealNSendCard(connection_fd);
     receiveMessage(connection_fd, buffer, BUFFER_SIZE);
 
+    //While player whats  new card
     while ( opt == 1 && strncmp(buffer, "RECEIVED", 8) == 0 ){
-      //While player whats  new card
       receiveMessage(connection_fd, buffer, BUFFER_SIZE);
       sscanf(buffer, "%d", &opt);
+      //if player wants a new card deal
       if (opt == 1){
         players_cards[i++] = dealNSendCard(connection_fd);
         receiveMessage(connection_fd, buffer, BUFFER_SIZE);
       }
+      //if player is over 21 break and set over21 to true
       if (getTotal(players_cards, i) > 21){
-        printf("Player lost\n");
-        hand = 1;
+        over21 = 1;
         opt = 2;
       }
     }
 
-    if (hand == 0){
+    //if over21 is false deal dealer cards
+    if (over21 == 0){
+    // deal until dealer is higher than player
     while (getTotal(dealers_cards, k) < getTotal(players_cards, i) ){
         dealers_cards[k++] = dealNSendCard(connection_fd);
         receiveMessage(connection_fd, buffer, BUFFER_SIZE);
       }
-
+      // when dealer is higher send stand signal
       sprintf(buffer, "STAND");
       sendMessage(connection_fd, buffer, strlen(buffer));
       receiveMessage(connection_fd, buffer, BUFFER_SIZE);
-
+      //if dealer is over 21 player won
       if (getTotal(dealers_cards, k) > 21){
         pot += bet;
         sprintf(buffer, "WON");
         sendMessage(connection_fd, buffer, strlen(buffer));
+      // if dealer is 21 or below player lost since dealer is equal or over player
       } else {
         pot -= bet;
         sprintf(buffer, "LOST");
         sendMessage(connection_fd, buffer, strlen(buffer));
       }
+    //if player is over 21 player lost
     } else{
       pot -= bet;
       sprintf(buffer, "LOST");
       sendMessage(connection_fd, buffer, strlen(buffer));
     }
-    hand = 0;
+    //reset over21
+    over21 = 0;
+    //recive result acknlowage
     receiveMessage(connection_fd, buffer, BUFFER_SIZE);
     if (strncmp(buffer, "RESULTREAD", 11) == 0){
+      //send pot to user and recive ackolowage
       sprintf(buffer, "%d", pot);
       sendMessage(connection_fd, buffer, strlen(buffer));
+      receiveMessage(connection_fd, buffer, BUFFER_SIZE);
     }
-    receiveMessage(connection_fd, buffer, BUFFER_SIZE);
-
+    // if user is not out money send game on signal
     if (pot > 0 && strncmp(buffer, "STATUS", 8) == 0){
       sprintf(buffer, "GAMEON");
       sendMessage(connection_fd, buffer, strlen(buffer));
     }
   }
-  // Goodbye
+  // if user is out of money broke form the loop and send gamover signal
   sprintf(buffer, "GAMEOVER");
   sendMessage(connection_fd, buffer, strlen(buffer));
   printf("player left, waiting for new player\n");
 }
 
-
+//function to deal and send a new card to client
 int dealNSendCard(int connection_fd){
   char buffer[BUFFER_SIZE];
   int card;
   card = rand() %  13 + 1;
   if (card > 10)
     card = 10;
-  printf("server card %d\n", card);
   sprintf(buffer, "%d", card);
   sendMessage(connection_fd, buffer, strlen(buffer));
   return card;
 }
 
+//function to get total from a players hand
 int getTotal (int *cards, int size){
   int total = 0;
   for (int i = 0; i < size; i++)
     total += cards[i];
-    printf("total : %d \n", total );
   return total;
 }
