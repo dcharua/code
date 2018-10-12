@@ -9,9 +9,10 @@
 void usage(char * program);
 void connectToServer(char * address, char * port);
 void communicationLoop(int connection_fd);
-void printCards(int *cards, int size);
-int getTotal (int *cards, int size);
-int receiveCard(int connection_fd);
+void printCards(char *cards, int size);
+int getTotal (char *cards, int size);
+char receiveCard(int connection_fd, int player);
+void printCard(char card);
 
 int main(int argc, char * argv[]){
   printf("\n=== CLIENT PROGRAM ===\n");
@@ -67,9 +68,8 @@ void connectToServer(char * address, char * port){
 
 // Do the actual receiving and sending of data
 void communicationLoop(int connection_fd){
-  char buffer[BUFFER_SIZE];
-  int chars_read, pot, players_cards[MAXCARDS], dealers_cards[MAXCARDS], opt,
-  bet, player_sum = 0, dealer_sum = 0, i = 0 , k = 0, over21 = 0;
+  char buffer[BUFFER_SIZE], players_cards[MAXCARDS], dealers_cards[MAXCARDS];
+  int pot, opt, bet, i = 0 , k = 0, over21 = 0;
 
   // Handshake
   sprintf(buffer, "Lets play");
@@ -87,12 +87,14 @@ void communicationLoop(int connection_fd){
   // Start game
   if (strncmp(buffer, "PLAY?", 5) == 0){
     while (strncmp(buffer, "GAMEOVER", 8) != 0){
-      printf("\n\n======= BlackJack 21 ==========\n");
-      printf("===================  Pot %d \n", pot);
-      printf("= 1.- Deal Hand      ========== \n");
-      printf("= 2.- Leave Game     ==========\n");
-      printf("= Enter the number:");
-      scanf("%d", &opt);
+      do{
+        printf("\n\n======= BlackJack 21 ==========\n");
+        printf("===================  Pot %d \n", pot);
+        printf("= 1.- Deal Hand      ========== \n");
+        printf("= 2.- Leave Game     ==========\n");
+        printf("= Enter the number:");
+        scanf("%d", &opt);
+      } while (opt!=1 && opt !=2 );
       sprintf(buffer, "%d", opt);
       sendMessage(connection_fd, buffer, strlen(buffer));
       //if user whats to leave break from loop
@@ -108,34 +110,32 @@ void communicationLoop(int connection_fd){
       sprintf(buffer, "%d", bet);
       sendMessage(connection_fd, buffer, strlen(buffer));
       //Get players first card and send acknowledge in function
-      players_cards[i] = receiveCard(connection_fd);
-      printf("\nYou got card %d \n", players_cards[i++]);
+      printf("\n");
+      players_cards[i++] = receiveCard(connection_fd, 1);
       //Get dealers first card and send acknowledge in function
-      dealers_cards[k] = receiveCard(connection_fd);
-      printf("Dealer got card %d \n", dealers_cards[k++]);
+      dealers_cards[k++] = receiveCard(connection_fd, 2);
       //Get players first card and send acknowledge in function
-      players_cards[i] = receiveCard(connection_fd);
-      printf("You got card %d \n", players_cards[i++]);
+      players_cards[i++] = receiveCard(connection_fd, 1);
       //Get dealers second card and send acknowledge in function
-      dealers_cards[k] = receiveCard(connection_fd);
-      printf("Dealer got card %d \n", dealers_cards[k++]);
+      dealers_cards[k++] = receiveCard(connection_fd, 3);
       //print players cards
-      printf("Your  cards ");
+      printf("-------------\nYour cards ");
       printCards(players_cards,  i);
 
       //Looping until player wants to stand
       while (opt == 1){
-        printf("\n= 1.- Hit            ========== \n");
-        printf("= 2.- Hold           ==========\n");
-        printf("= Enter the number:");
-        scanf("%d", &opt);
+        do{
+          printf("\n= 1.- Hit            ========== \n");
+          printf("= 2.- Hold           ==========\n");
+          printf("= Enter the number:");
+          scanf("%d", &opt);
+        } while (opt!=1 && opt !=2 );  
         sprintf(buffer, "%d", opt);
         sendMessage(connection_fd, buffer, strlen(buffer));
         //if player whats a new card
         if (opt == 1){
-          players_cards[i] = receiveCard(connection_fd);
-          printf("You got card %d \n", players_cards[i++]);
-          printf("Your  cards ");
+          players_cards[i++] = receiveCard(connection_fd, 1);
+          printf("your cards ");
           printCards(players_cards, i);
           //If player is over 21 break out of loop and print the he lost
           if (getTotal(players_cards, i) > 21){
@@ -148,7 +148,7 @@ void communicationLoop(int connection_fd){
       //If player is not over 21
       if (over21 == 0){
         //Show dealears hidden card
-        printf("\nDealer opened closed card: %d\n", dealers_cards[1]);
+        printf("\nDealer opened closed card: %c\n", dealers_cards[1]);
         printf("Dealers cards ");
         printCards(dealers_cards, k);
         //Loop for dealers new cards until STAND is received
@@ -156,10 +156,11 @@ void communicationLoop(int connection_fd){
           receiveMessage(connection_fd, buffer, BUFFER_SIZE);
           if (strncmp(buffer, "STAND", 5) == 0)
             break;
-          sscanf(buffer, "%d", &dealers_cards[k]);
+          sscanf(buffer, "%c", &dealers_cards[k]);
           sprintf(buffer, "RECEIVED");
           sendMessage(connection_fd, buffer, strlen(buffer));
-          printf("Dealer got card %d \n", dealers_cards[k++]);
+          printf("Dealer got card ");
+          printCard(dealers_cards[k++]);
           printf("Dealers cards ");
           printCards(dealers_cards, k);
         }
@@ -197,30 +198,64 @@ void communicationLoop(int connection_fd){
     printf("Thank you for playing, come back soon \n");
 }
 
-//Funtion to print cards and get the total for user display
-void printCards(int *cards, int size){
+//Function to print cards and get the total for user display
+void printCards(char *cards, int size){
   for(int i = 0; i<size; i++)
-    if (cards[i] > 0 && cards[i] < 11 )
-      printf("%d-", cards[i]);
+    printCard(cards[i]);
   printf("\n");
   printf("total : %d \n", getTotal(cards, size));
 }
 
-//function to receive card and send acknowledge
-int receiveCard(int connection_fd){
-  int card;
+//function to receive card print and send acknowledge
+char receiveCard(int connection_fd, int player){
+  char card;
   char buffer[BUFFER_SIZE];
   receiveMessage(connection_fd, buffer, BUFFER_SIZE);
-  sscanf(buffer, "%d", &card);
+  sscanf(buffer, "%c", &card);
   sprintf(buffer, "RECEIVED");
   sendMessage(connection_fd, buffer, strlen(buffer));
+  // printing card with player
+  if(player == 1){
+    printf("You got card ");
+    printCard(card);
+    printf("\n");
+  }
+  if(player == 2){
+    printf("Dealer got card ");
+    printCard(card);
+    printf("\n");
+  }
   return card;
 }
 
-//function to sum total, used for user experience
-int getTotal (int *cards, int size){
+//function to get total from a players hand
+int getTotal (char *cards, int size){
   int total = 0;
-  for (int i = 0; i < size; i++)
-    total += cards[i];
+  int as = 0;
+  for (int i = 0; i < size; i++){
+    //if there is an As add 11 and incremnet As counter
+    if (cards[i] == 'A'){
+      total += 11;
+      as ++;
+    }
+    //convert the letters to 10 and the the rest from char to int
+    else if (cards[i] == 'J' || cards[i] == 'Q' || cards[i] == 'K' || cards[i] == '0')
+      total += 10;
+    else
+      total += cards[i] - '0';
+  }
+  //for every As check if total is over 21, is so deduct 10
+  for (int i = 0; i < as; i++){
+    if (total > 21)
+      total -= 10;
+  }
   return total;
+}
+
+//function made in order to handle the 0 char to 10
+void printCard(char card){
+  if (card == '0')
+    printf ("1%c ", card);
+  else
+    printf ("%c ", card);
 }

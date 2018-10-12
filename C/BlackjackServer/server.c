@@ -7,14 +7,14 @@
 #define SERVICE_PORT 8642
 #define MAX_QUEUE 5
 #define BUFFER_SIZE 1024
-#define MAXCARDS 21
+#define MAXCARDS 10
 
 void usage(char * program);
 void waitForConnections(int server_fd);
 void playBlackjack(int connection_fd);
 int dealNewGame(int *players_cards, int *dealers_cards, int connection_fd);
-int dealNSendCard(int connection_fd);
-int getTotal (int *cards, int size);
+char dealNSendCard(int connection_fd);
+int getTotal (char *cards, int size);
 
 
 int main(int argc, char * argv[]){
@@ -102,19 +102,18 @@ void waitForConnections(int server_fd){
 
 // Do the actual receiving and sending of data
 void playBlackjack(int connection_fd){
-  char buffer[BUFFER_SIZE], hit;
+  char buffer[BUFFER_SIZE], players_cards[MAXCARDS], dealers_cards[MAXCARDS];
   //int message_counter = 0;
-  int chars_read, pot, players_cards[MAXCARDS], dealers_cards[MAXCARDS],opt,
-  bet, player_sum = 0, dealer_sum = 0, i = 0 , k = 0, over21 = 0;
+  int pot, opt, bet, i = 0 , k = 0, over21 = 0;
+
   // Handshake
   receiveMessage(connection_fd, buffer, BUFFER_SIZE);
   sprintf(buffer, "POT");
   sendMessage(connection_fd, buffer, strlen(buffer));
 
-  // Receive the pot from the user and print
+  // Receive the pot from the user
   receiveMessage(connection_fd, buffer, BUFFER_SIZE);
   sscanf(buffer, "%d", &pot);
-  printf("The player's initial pot is: %d\n", pot);
   //send play signal and recive
   sprintf(buffer, "PLAY?");
   sendMessage(connection_fd, buffer, strlen(buffer));
@@ -166,7 +165,7 @@ void playBlackjack(int connection_fd){
     //if over21 is false deal dealer cards
     if (over21 == 0){
     // deal until dealer is higher than player
-    while (getTotal(dealers_cards, k) < getTotal(players_cards, i) ){
+    while (getTotal(dealers_cards, k)  < 17){
         dealers_cards[k++] = dealNSendCard(connection_fd);
         receiveMessage(connection_fd, buffer, BUFFER_SIZE);
       }
@@ -174,12 +173,11 @@ void playBlackjack(int connection_fd){
       sprintf(buffer, "STAND");
       sendMessage(connection_fd, buffer, strlen(buffer));
       receiveMessage(connection_fd, buffer, BUFFER_SIZE);
-      //if dealer is over 21 player won
-      if (getTotal(dealers_cards, k) > 21){
+      //if dealer is over 21 player won or has less than players
+      if (getTotal(dealers_cards, k) > 21 || getTotal(players_cards, i) > getTotal(dealers_cards, k)){
         pot += bet;
         sprintf(buffer, "WON");
         sendMessage(connection_fd, buffer, strlen(buffer));
-      // if dealer is 21 or below player lost since dealer is equal or over player
       } else {
         pot -= bet;
         sprintf(buffer, "LOST");
@@ -214,21 +212,49 @@ void playBlackjack(int connection_fd){
 }
 
 //function to deal and send a new card to client
-int dealNSendCard(int connection_fd){
+char dealNSendCard(int connection_fd){
   char buffer[BUFFER_SIZE];
-  int card;
-  card = rand() %  13 + 1;
-  if (card > 10)
-    card = 10;
-  sprintf(buffer, "%d", card);
+  int temp;
+  char card = 'A';
+  //calulate random number and change it for letters in needed
+  temp = rand() %  13 + 1;
+  if (temp == 1)
+    card = 'A';
+  else if (temp == 10) //card 10 is sent as 0 since is a char
+    card = '0';
+  else if (temp == 11)
+    card = 'J';
+  else if (temp == 12)
+    card = 'Q';
+  else if(temp == 13)
+    card = 'K';
+  else
+    card = temp + '0'; //convert number to char
+  sprintf(buffer, "%c", card);
   sendMessage(connection_fd, buffer, strlen(buffer));
   return card;
 }
 
 //function to get total from a players hand
-int getTotal (int *cards, int size){
+int getTotal (char *cards, int size){
   int total = 0;
-  for (int i = 0; i < size; i++)
-    total += cards[i];
+  int as = 0;
+  for (int i = 0; i < size; i++){
+    //if there is an As add 11 and incremnet As counter
+    if (cards[i] == 'A'){
+      total += 11;
+      as ++;
+    }
+    //convert the letters to 10 and the the rest from char to int
+    else if (cards[i] == 'J' || cards[i] == 'Q' || cards[i] == 'K' || cards[i] == '0')
+      total += 10;
+    else
+      total += cards[i] - '0';
+  }
+  //for every As check if total is over 21, if so deduct 10
+  for (int i = 0; i < as; i++){
+    if (total > 21)
+      total -= 10;
+  }
   return total;
 }

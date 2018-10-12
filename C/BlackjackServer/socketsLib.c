@@ -27,6 +27,7 @@ int receiveMessage(int connection_fd, char * buffer, int buff_length){
 int sendMessage(int connection_fd, char * buffer, int buff_length){
   if (send(connection_fd, buffer, strlen(buffer), 0) == -1)
     kill("send error");
+  return 1;  
 }
 
 // Initialize the server to be ready for connections

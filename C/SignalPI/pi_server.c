@@ -1,4 +1,4 @@
-//Modify by Daniel Charua A01017419
+//Modify by Daniel Charua A01017419 12/10/18
 
 /*
     Server program to compute the value of PI
@@ -240,7 +240,7 @@ void attendRequest(int client_fd){
   bzero(buffer, BUFFER_SIZE);
 
   // RECV
-  // Receive the request
+  // Receive the iterations form client
   chars_read = recv(client_fd, buffer, BUFFER_SIZE, 0);
   if (chars_read == -1){
     fatalError("recv");
@@ -249,7 +249,7 @@ void attendRequest(int client_fd){
 
   printf(" > Got request from client with iterations=%lu\n", iterations);
 
-  // Compute the value of PI
+  // Compute the value of PI with the iterations
   result = computePI(iterations);
 
   printf(" > Sending PI=%.20lf after %lu iterations\n", result, counter);
@@ -257,7 +257,7 @@ void attendRequest(int client_fd){
   // Prepare the response to the client
   sprintf(buffer, "%.20lf", result);
   // SEND
-  // Send the response
+  // Send the result of PI
   if (send(client_fd, buffer, strlen(buffer)+1, 0) == -1){
     fatalError("send");
   }
@@ -270,7 +270,7 @@ void attendRequest(int client_fd){
   // Prepare the response to the client
   sprintf(buffer, "%lu", counter);
   // SEND
-  // Send the response
+  // Send the number of iterations
   if (send(client_fd, buffer, strlen(buffer)+1, 0) == -1){
     fatalError("send");
   }
@@ -278,11 +278,12 @@ void attendRequest(int client_fd){
 
 //Function to compute PI
 double computePI(unsigned long int iterations){
+  //varibles to compute PIma
   double result = 4;
   int sign = -1;
   unsigned long int divisor = 3;
 
-  //Variables to poll the standard input
+  //Variables to poll the standard input, very short timeout to speed up calculate
   struct pollfd test_fd;
   int timeout = 1;
   int poll_result;
