@@ -1,0 +1,22 @@
+d e k l
+a space  a
+a 0123456789 b
+a,b,c,g +=*^() e
+a . f
+a abcdefghijklmnñopqrstuvwxykABCDEFGHIJKLMNÑOPQRSTUVWXYZ g
+a ‐- h
+a,b,c,g / i
+b,c,e,f,g,h,i space d
+b 0123456789 b
+b .Ee c
+c ‐-Ee c
+c 0123456789 c
+f 0123456789 c
+g abcdefghijklmnñopqrstuvwxykABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_ g
+h 0123456789 b
+h abcdefghijklmnñopqrstuvwxykABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789 e
+i / j
+i,h abcdefghijklmnñopqrstuvwxykABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789 l
+j abcdefghijklmnñopqrstuvwxykABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_ j
+j space j
+j \n k
