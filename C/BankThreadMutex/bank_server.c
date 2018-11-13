@@ -106,7 +106,7 @@ int main(int argc, char * argv[]){
   printLocalIPs();
   // Start the server
   server_fd = initServer(argv[1], MAX_QUEUE);
-// Listen for connections from the clients
+  // Listen for connections from the clients
   waitForConnections(server_fd, &bank_data, &data_locks);
   // Close the socket
   close(server_fd);
@@ -218,18 +218,18 @@ void waitForConnections(int server_fd, bank_t * bank_data, locks_t * data_locks)
     else{
       // Check the type of event detected
       if (test_fds[0].revents & POLLIN){
-  			// ACCEPT
-  			// Wait for a client connection
-  			client_fd = accept(server_fd, (struct sockaddr *)&client_address, &client_address_size);
-  			if (client_fd == -1)
-  				fatalError("ERROR: accept");
+        // ACCEPT
+        // Wait for a client connection
+        client_fd = accept(server_fd, (struct sockaddr *)&client_address, &client_address_size);
+        if (client_fd == -1)
+        	fatalError("ERROR: accept");
 
 
-  			// Get the data from the client
-  			inet_ntop(client_address.sin_family, &client_address.sin_addr, client_presentation, sizeof client_presentation);
-  			printf("Received incomming connection from %s on port %d\n", client_presentation, client_address.sin_port);
+        // Get the data from the client
+        inet_ntop(client_address.sin_family, &client_address.sin_addr, client_presentation, sizeof client_presentation);
+        printf("Received incomming connection from %s on port %d\n", client_presentation, client_address.sin_port);
 
-  			// Prepare the structure to send to the thread
+        // Prepare the structure to send to the thread
         connection_data = malloc(sizeof (thread_data_t));
         connection_data->connection_fd = client_fd;
         connection_data->bank_data = bank_data;
@@ -295,7 +295,7 @@ void * attentionThread(void * arg){
         break;
       // Deposit into account
       case DEPOSIT:
-        //Lock the account data send OK,updsate balance and unlock
+        //Lock the account data send OK,update balance and unlock
         pthread_mutex_lock(&connection_data->data_locks->account_mutex[account]);
           connection_data->bank_data->account_array[account].balance += amount;
           response = OK;
@@ -305,7 +305,7 @@ void * attentionThread(void * arg){
         break;
       // Withdraw from account
       case  WITHDRAW:
-        //lock the account date, check of theres enough balance
+        //lock the account date, check if there is enough balance
         pthread_mutex_lock(&connection_data->data_locks->account_mutex[account]);
           //if there is enough balance, update it and send it with OK
           if (amount < connection_data->bank_data->account_array[account].balance){
@@ -339,6 +339,8 @@ void * attentionThread(void * arg){
   }
   // Print the total number of transactions performed for this client
   printf("Client left, Total successful transations for this client: %d\n\n", transitions);
+  //free connection memory
+  free(connection_data);
   //close the thread
   pthread_exit(NULL);
 }

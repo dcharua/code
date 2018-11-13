@@ -1,0 +1,29 @@
+#lang racket
+; Daniel Charua
+
+; Funcion para hacer el swap dependiendo si es mayor o no
+(define (swap list)
+  (if (null? (cdr list)) ; Caso base se regresa la lista ordenada
+      list 
+      (if (< (car list) (car(cdr list))) 
+          (cons (car list) (swap(cdr list)))
+          (cons (car (cdr list)) (swap(cons (car list) (cdr(cdr list)))))
+      )
+   )
+ )
+
+
+; Funcion con el tamaño de la lista para donde se hacer recursion con el swap
+(define (bubble i list)
+  (if (= i 1) ; Caso base, se cambian los ultimos dos numeros
+      (swap list)
+      (bubble (- i 1) (swap list)) ; Se llama swap y se reduce el contador 
+  )
+)
+
+;Funcion Principal que llama a otra funcion
+(define (bubbleSort list)
+  (bubble (length list) list)
+  )
+
+
