@@ -1,9 +1,6 @@
 /*
-   Functions for working with arrays of characters
-
-    Gilberto Echeverria
-    gilecheverria@yahoo.com
-    01/02/2017
+Daniel Charua - A01017419 - 10/11/18
+Functions for working with arrays of characters
 */
 
 #ifndef STRING_FUNCTIONS_H

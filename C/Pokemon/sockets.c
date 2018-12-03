@@ -1,16 +1,11 @@
-//Modify by Daniel Charua - A01017419 - 17/10/18
 /*
-    Helper methods to use with sockets
-    The basic functions that should be done on any client / server program
-    - Creation of the socket on the server and binding
-    - Printing the local addresses
-    - Creation of a socket on a client
-    - Error validation when sending or receiving messages
-
-    Gilberto Echeverria
-    gilecheverria@yahoo.com
-    31/03/2018
+  PokemonServer.c
+  FinalProyect
+  24/11/18
+  Daniel Charua - Joan Andoni
+  Copyright (c) 2018. All rights reserved.
 */
+
 
 #include "sockets.h"
 
@@ -173,6 +168,13 @@ int connectSocket(char * address, char * port)
     Receive the file descriptor, a string to store the message and the max string size
     Returns 1 on successful receipt, or 0 if the connection has finished
 */
+void getMessage(int connection_fd, char * buffer, int size ){
+	if (!recvString(connection_fd, buffer, size)){
+ 	 perror("Message recive");
+ 	 exit(EXIT_FAILURE);
+  }
+}
+
 int recvString(int connection_fd, char * buffer, int size)
 {
     int chars_read;

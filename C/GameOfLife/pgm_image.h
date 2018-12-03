@@ -1,4 +1,6 @@
 /*
+Daniel Charua - A01017419 - 10/11/18
+
    Definition of an image data structure for PGM format images
    Uses typedef, struct
    Uses functions to read and write a file in PGM format, described here:
@@ -25,21 +27,21 @@
 
 // Structure for a pixel color information, using RGB components
 typedef struct pixel_struct{
-    unsigned char value;
+  unsigned char value;
 } pixel_t;
 
 // Structure to store full image data of any size
 typedef struct image_struct{
-    int width;
-    int height;
-    pixel_t ** pixels;
+  int width;
+  int height;
+  pixel_t ** pixels;
 } image_t;
 
 // Structure for an image in PGM format
 typedef struct pgm_struct{
-    char magic_number[3];           // String for the code indicating the type of PGM file
-    int max_value;                  // Maximum value for pixel data in each component
-    image_t image;
+  char magic_number[3];           // String for the code indicating the type of PGM file
+  int max_value;                  // Maximum value for pixel data in each component
+  image_t image;
 } pgm_t;
 
 //// FUNCTION PROTOTYPES

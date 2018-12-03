@@ -1,4 +1,5 @@
-# Makefile to compile a complex program composed of many libraries
+# Daniel Charua A01017419
+#Makefile to compile a complex program composed of many libraries
 
 ### Variables for this project ###
 # These should be the only ones that need to be modified
@@ -12,12 +13,12 @@ MAIN = game_of_life
 ### Variables for the compilation rules ###
 # These should work for most projects, but can be modified when necessary
 # The compiler program to use
-CC = gcc-7
+CC = gcc
 # Options to use when compiling object files
-CFLAGS = -Wall -g -std=c99 -pedantic -fopenmp -pthread# -O2
+CFLAGS = -Wall -g -std=c99 -pedantic -fopenmp # -O2
 # Options to use for the final linking process
 # This one links the math library
-LDLIBS = -lm -fopenmp -pthread
+LDLIBS = -lm -fopenmp
 
 ### The rules ###
 # These should work for most projects without change
@@ -36,6 +37,6 @@ $(MAIN): $(OBJECTS)
 # Clear the compiled files
 clean:
 	rm -rf *.o $(MAIN)
-
+	
 # Indicate the rules that do not refer to a file
 .PHONY: clean all
