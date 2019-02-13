@@ -1,0 +1,4 @@
+Daniel Charua A01017419
+procentaje de 2 cuadras0.43048
+posicion mas comun[(0, 0)]
+

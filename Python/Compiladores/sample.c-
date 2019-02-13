@@ -1,0 +1,7 @@
+int number= 4rd;
+if(number > 3){
+  return 3;
+  /* coment * jsjd */
+} else {
+  numero = 4 + 5 / 5 * 5 4 -4.3;
+}

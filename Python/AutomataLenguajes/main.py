@@ -118,7 +118,7 @@ class AFD:
 
 #Function to get arguments from user, set defaults and display help
 def parse_args():
-    parser = argparse.ArgumentParser(description='Train CNN base networks')
+    parser = argparse.ArgumentParser(description='AFD')
     parser.add_argument('--transitions', dest='transitions',
                         help='Text file with the transitions, check documentation for more details',
                         default='AFD.txt', type=str)

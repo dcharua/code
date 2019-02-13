@@ -1,0 +1,10 @@
+Numero 1
+	numero1 (41, 765) cantidad
+	numero2 (17, 781) cantidad
+	numero3 (43, 767) cantidad
+	numero4 (48, 770) cantidad
+	numero5 (54, 787) canitdad
+	numero magico (10, 2075) cantidad
+
+Posibilidad de ganar 70!/5!*(70-5)!*25 = 36,309,042,000
+
