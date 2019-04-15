@@ -31,6 +31,6 @@ regular_expresions = [
 (r'return',                   TokenType.RESERVED),
 (r'void',                     TokenType.RESERVED),
 (r'while',                    TokenType.RESERVED),
-(r'[\d]+[\w]+',               TokenType.ERROR),
-(r'[\d]+',                    TokenType.INT),
-(r'[\w]+[\d]*',               TokenType.ID)]
+(r'[0-9]+[a-zA-Z]+',          TokenType.ERROR),
+(r'[0-9]+',                   TokenType.INT),
+(r'[a-zA-Z_][0-9a-zA-Z_]*',   TokenType.ID)]

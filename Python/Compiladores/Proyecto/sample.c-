@@ -1,0 +1,3 @@
+int number ( void l, int k ) {
+    lo = k;
+}
