@@ -1,0 +1,1815 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+    WHITESPACE
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> declaration_list ENDFILE
+Rule 2     declaration_list -> declaration_list declaration
+Rule 3     declaration_list -> declaration
+Rule 4     declaration -> fun_declaration
+Rule 5     declaration -> var_declaration
+Rule 6     var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+Rule 7     var_declaration -> type_specifier ID SEMICOLON
+Rule 8     type_specifier -> INT
+Rule 9     type_specifier -> VOID
+Rule 10    fun_declaration -> type_specifier ID LEFTPAR params RIGHTPAR compound_stmt
+Rule 11    params -> param_list
+Rule 12    params -> VOID
+Rule 13    param_list -> param_list COMMA param
+Rule 14    param_list -> param
+Rule 15    param -> type_specifier ID
+Rule 16    param -> type_specifier ID LEFTBRACKET RIGHTBRACKET
+Rule 17    compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE
+Rule 18    local_declarations -> local_declarations var_declaration
+Rule 19    local_declarations -> <empty>
+Rule 20    statement_list -> statement_list statement
+Rule 21    statement_list -> <empty>
+Rule 22    statement -> compound_stmt
+Rule 23    statement -> expression_stmt
+Rule 24    statement -> selection_stmt
+Rule 25    statement -> iteration_stmt
+Rule 26    statement -> return_stmt
+Rule 27    expression_stmt -> expression SEMICOLON
+Rule 28    expression_stmt -> SEMICOLON
+Rule 29    selection_stmt -> IF LEFTPAR expression RIGHTPAR statement
+Rule 30    selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement
+Rule 31    iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement
+Rule 32    return_stmt -> RETURN SEMICOLON
+Rule 33    return_stmt -> RETURN expression SEMICOLON
+Rule 34    expression -> var ASSIGN expression
+Rule 35    expression -> simple_expression
+Rule 36    simple_expression -> additive_expression relop additive_expression
+Rule 37    simple_expression -> additive_expression
+Rule 38    relop -> LESSER
+Rule 39    relop -> LESSEREQ
+Rule 40    relop -> GREATER
+Rule 41    relop -> GREATEREQ
+Rule 42    relop -> EQ
+Rule 43    relop -> NOTEQ
+Rule 44    additive_expression -> additive_expression addop term
+Rule 45    additive_expression -> term
+Rule 46    addop -> PLUS
+Rule 47    addop -> MINUS
+Rule 48    term -> term mulop factor
+Rule 49    term -> factor
+Rule 50    mulop -> MULT
+Rule 51    mulop -> DIV
+Rule 52    factor -> var
+Rule 53    factor -> call
+Rule 54    factor -> NUM
+Rule 55    factor -> LEFTPAR expression RIGHTPAR
+Rule 56    call -> ID LEFTPAR args RIGHTPAR
+Rule 57    args -> arg_list
+Rule 58    args -> <empty>
+Rule 59    arg_list -> arg_list COMMA expression
+Rule 60    arg_list -> expression
+Rule 61    var -> ID
+Rule 62    var -> ID LEFTBRACKET expression RIGHTBRACKET
+
+Terminals, with rules where they appear
+
+ASSIGN               : 34
+COMMA                : 13 59
+COMMENT              : 
+DIV                  : 51
+ELSE                 : 30
+ENDFILE              : 1
+EQ                   : 42
+GREATER              : 40
+GREATEREQ            : 41
+ID                   : 6 7 10 15 16 56 61 62
+IF                   : 29 30
+INT                  : 8
+LEFTBRACE            : 17
+LEFTBRACKET          : 6 16 62
+LEFTPAR              : 10 29 30 31 55 56
+LESSER               : 38
+LESSEREQ             : 39
+MINUS                : 47
+MULT                 : 50
+NOTEQ                : 43
+NUM                  : 6 54
+PLUS                 : 46
+RETURN               : 32 33
+RIGHTBRACE           : 17
+RIGHTBRACKET         : 6 16 62
+RIGHTPAR             : 10 29 30 31 55 56
+SEMICOLON            : 6 7 27 28 32 33
+VOID                 : 9 12
+WHILE                : 31
+WHITESPACE           : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+additive_expression  : 36 36 37 44
+addop                : 44
+arg_list             : 57 59
+args                 : 56
+call                 : 53
+compound_stmt        : 10 22
+declaration          : 2 3
+declaration_list     : 1 2
+expression           : 27 29 30 31 33 34 55 59 60 62
+expression_stmt      : 23
+factor               : 48 49
+fun_declaration      : 4
+iteration_stmt       : 25
+local_declarations   : 17 18
+mulop                : 48
+param                : 13 14
+param_list           : 11 13
+params               : 10
+program              : 0
+relop                : 36
+return_stmt          : 26
+selection_stmt       : 24
+simple_expression    : 35
+statement            : 20 29 30 30 31
+statement_list       : 17 20
+term                 : 44 45 48
+type_specifier       : 6 7 10 15 16
+var                  : 34 52
+var_declaration      : 5 18
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . declaration_list ENDFILE
+    (2) declaration_list -> . declaration_list declaration
+    (3) declaration_list -> . declaration
+    (4) declaration -> . fun_declaration
+    (5) declaration -> . var_declaration
+    (10) fun_declaration -> . type_specifier ID LEFTPAR params RIGHTPAR compound_stmt
+    (6) var_declaration -> . type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+    (7) var_declaration -> . type_specifier ID SEMICOLON
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    program                        shift and go to state 1
+    declaration_list               shift and go to state 2
+    declaration                    shift and go to state 3
+    fun_declaration                shift and go to state 4
+    var_declaration                shift and go to state 5
+    type_specifier                 shift and go to state 6
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> declaration_list . ENDFILE
+    (2) declaration_list -> declaration_list . declaration
+    (4) declaration -> . fun_declaration
+    (5) declaration -> . var_declaration
+    (10) fun_declaration -> . type_specifier ID LEFTPAR params RIGHTPAR compound_stmt
+    (6) var_declaration -> . type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+    (7) var_declaration -> . type_specifier ID SEMICOLON
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    ENDFILE         shift and go to state 9
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    declaration                    shift and go to state 10
+    fun_declaration                shift and go to state 4
+    var_declaration                shift and go to state 5
+    type_specifier                 shift and go to state 6
+
+state 3
+
+    (3) declaration_list -> declaration .
+
+    ENDFILE         reduce using rule 3 (declaration_list -> declaration .)
+    INT             reduce using rule 3 (declaration_list -> declaration .)
+    VOID            reduce using rule 3 (declaration_list -> declaration .)
+
+
+state 4
+
+    (4) declaration -> fun_declaration .
+
+    ENDFILE         reduce using rule 4 (declaration -> fun_declaration .)
+    INT             reduce using rule 4 (declaration -> fun_declaration .)
+    VOID            reduce using rule 4 (declaration -> fun_declaration .)
+
+
+state 5
+
+    (5) declaration -> var_declaration .
+
+    ENDFILE         reduce using rule 5 (declaration -> var_declaration .)
+    INT             reduce using rule 5 (declaration -> var_declaration .)
+    VOID            reduce using rule 5 (declaration -> var_declaration .)
+
+
+state 6
+
+    (10) fun_declaration -> type_specifier . ID LEFTPAR params RIGHTPAR compound_stmt
+    (6) var_declaration -> type_specifier . ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+    (7) var_declaration -> type_specifier . ID SEMICOLON
+
+    ID              shift and go to state 11
+
+
+state 7
+
+    (8) type_specifier -> INT .
+
+    ID              reduce using rule 8 (type_specifier -> INT .)
+
+
+state 8
+
+    (9) type_specifier -> VOID .
+
+    ID              reduce using rule 9 (type_specifier -> VOID .)
+
+
+state 9
+
+    (1) program -> declaration_list ENDFILE .
+
+    $end            reduce using rule 1 (program -> declaration_list ENDFILE .)
+
+
+state 10
+
+    (2) declaration_list -> declaration_list declaration .
+
+    ENDFILE         reduce using rule 2 (declaration_list -> declaration_list declaration .)
+    INT             reduce using rule 2 (declaration_list -> declaration_list declaration .)
+    VOID            reduce using rule 2 (declaration_list -> declaration_list declaration .)
+
+
+state 11
+
+    (10) fun_declaration -> type_specifier ID . LEFTPAR params RIGHTPAR compound_stmt
+    (6) var_declaration -> type_specifier ID . LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+    (7) var_declaration -> type_specifier ID . SEMICOLON
+
+    LEFTPAR         shift and go to state 12
+    LEFTBRACKET     shift and go to state 13
+    SEMICOLON       shift and go to state 14
+
+
+state 12
+
+    (10) fun_declaration -> type_specifier ID LEFTPAR . params RIGHTPAR compound_stmt
+    (11) params -> . param_list
+    (12) params -> . VOID
+    (13) param_list -> . param_list COMMA param
+    (14) param_list -> . param
+    (15) param -> . type_specifier ID
+    (16) param -> . type_specifier ID LEFTBRACKET RIGHTBRACKET
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    VOID            shift and go to state 18
+    INT             shift and go to state 7
+
+    type_specifier                 shift and go to state 15
+    params                         shift and go to state 16
+    param_list                     shift and go to state 17
+    param                          shift and go to state 19
+
+state 13
+
+    (6) var_declaration -> type_specifier ID LEFTBRACKET . NUM RIGHTBRACKET SEMICOLON
+
+    NUM             shift and go to state 20
+
+
+state 14
+
+    (7) var_declaration -> type_specifier ID SEMICOLON .
+
+    ENDFILE         reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    INT             reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    VOID            reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    RIGHTBRACE      reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    LEFTBRACE       reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    SEMICOLON       reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    IF              reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    WHILE           reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    RETURN          reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    ID              reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    NUM             reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+    LEFTPAR         reduce using rule 7 (var_declaration -> type_specifier ID SEMICOLON .)
+
+
+state 15
+
+    (15) param -> type_specifier . ID
+    (16) param -> type_specifier . ID LEFTBRACKET RIGHTBRACKET
+
+    ID              shift and go to state 21
+
+
+state 16
+
+    (10) fun_declaration -> type_specifier ID LEFTPAR params . RIGHTPAR compound_stmt
+
+    RIGHTPAR        shift and go to state 22
+
+
+state 17
+
+    (11) params -> param_list .
+    (13) param_list -> param_list . COMMA param
+
+    RIGHTPAR        reduce using rule 11 (params -> param_list .)
+    COMMA           shift and go to state 23
+
+
+state 18
+
+    (12) params -> VOID .
+    (9) type_specifier -> VOID .
+
+    RIGHTPAR        reduce using rule 12 (params -> VOID .)
+    ID              reduce using rule 9 (type_specifier -> VOID .)
+
+
+state 19
+
+    (14) param_list -> param .
+
+    COMMA           reduce using rule 14 (param_list -> param .)
+    RIGHTPAR        reduce using rule 14 (param_list -> param .)
+
+
+state 20
+
+    (6) var_declaration -> type_specifier ID LEFTBRACKET NUM . RIGHTBRACKET SEMICOLON
+
+    RIGHTBRACKET    shift and go to state 24
+
+
+state 21
+
+    (15) param -> type_specifier ID .
+    (16) param -> type_specifier ID . LEFTBRACKET RIGHTBRACKET
+
+    COMMA           reduce using rule 15 (param -> type_specifier ID .)
+    RIGHTPAR        reduce using rule 15 (param -> type_specifier ID .)
+    LEFTBRACKET     shift and go to state 25
+
+
+state 22
+
+    (10) fun_declaration -> type_specifier ID LEFTPAR params RIGHTPAR . compound_stmt
+    (17) compound_stmt -> . LEFTBRACE local_declarations statement_list RIGHTBRACE
+
+    LEFTBRACE       shift and go to state 27
+
+    compound_stmt                  shift and go to state 26
+
+state 23
+
+    (13) param_list -> param_list COMMA . param
+    (15) param -> . type_specifier ID
+    (16) param -> . type_specifier ID LEFTBRACKET RIGHTBRACKET
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    param                          shift and go to state 28
+    type_specifier                 shift and go to state 15
+
+state 24
+
+    (6) var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET . SEMICOLON
+
+    SEMICOLON       shift and go to state 29
+
+
+state 25
+
+    (16) param -> type_specifier ID LEFTBRACKET . RIGHTBRACKET
+
+    RIGHTBRACKET    shift and go to state 30
+
+
+state 26
+
+    (10) fun_declaration -> type_specifier ID LEFTPAR params RIGHTPAR compound_stmt .
+
+    ENDFILE         reduce using rule 10 (fun_declaration -> type_specifier ID LEFTPAR params RIGHTPAR compound_stmt .)
+    INT             reduce using rule 10 (fun_declaration -> type_specifier ID LEFTPAR params RIGHTPAR compound_stmt .)
+    VOID            reduce using rule 10 (fun_declaration -> type_specifier ID LEFTPAR params RIGHTPAR compound_stmt .)
+
+
+state 27
+
+    (17) compound_stmt -> LEFTBRACE . local_declarations statement_list RIGHTBRACE
+    (18) local_declarations -> . local_declarations var_declaration
+    (19) local_declarations -> .
+
+    INT             reduce using rule 19 (local_declarations -> .)
+    VOID            reduce using rule 19 (local_declarations -> .)
+    RIGHTBRACE      reduce using rule 19 (local_declarations -> .)
+    LEFTBRACE       reduce using rule 19 (local_declarations -> .)
+    SEMICOLON       reduce using rule 19 (local_declarations -> .)
+    IF              reduce using rule 19 (local_declarations -> .)
+    WHILE           reduce using rule 19 (local_declarations -> .)
+    RETURN          reduce using rule 19 (local_declarations -> .)
+    ID              reduce using rule 19 (local_declarations -> .)
+    NUM             reduce using rule 19 (local_declarations -> .)
+    LEFTPAR         reduce using rule 19 (local_declarations -> .)
+
+    local_declarations             shift and go to state 31
+
+state 28
+
+    (13) param_list -> param_list COMMA param .
+
+    COMMA           reduce using rule 13 (param_list -> param_list COMMA param .)
+    RIGHTPAR        reduce using rule 13 (param_list -> param_list COMMA param .)
+
+
+state 29
+
+    (6) var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .
+
+    ENDFILE         reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    INT             reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    VOID            reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    RIGHTBRACE      reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    LEFTBRACE       reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    SEMICOLON       reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    IF              reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    WHILE           reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    RETURN          reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    ID              reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    NUM             reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+    LEFTPAR         reduce using rule 6 (var_declaration -> type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON .)
+
+
+state 30
+
+    (16) param -> type_specifier ID LEFTBRACKET RIGHTBRACKET .
+
+    COMMA           reduce using rule 16 (param -> type_specifier ID LEFTBRACKET RIGHTBRACKET .)
+    RIGHTPAR        reduce using rule 16 (param -> type_specifier ID LEFTBRACKET RIGHTBRACKET .)
+
+
+state 31
+
+    (17) compound_stmt -> LEFTBRACE local_declarations . statement_list RIGHTBRACE
+    (18) local_declarations -> local_declarations . var_declaration
+    (20) statement_list -> . statement_list statement
+    (21) statement_list -> .
+    (6) var_declaration -> . type_specifier ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+    (7) var_declaration -> . type_specifier ID SEMICOLON
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    RIGHTBRACE      reduce using rule 21 (statement_list -> .)
+    LEFTBRACE       reduce using rule 21 (statement_list -> .)
+    SEMICOLON       reduce using rule 21 (statement_list -> .)
+    IF              reduce using rule 21 (statement_list -> .)
+    WHILE           reduce using rule 21 (statement_list -> .)
+    RETURN          reduce using rule 21 (statement_list -> .)
+    ID              reduce using rule 21 (statement_list -> .)
+    NUM             reduce using rule 21 (statement_list -> .)
+    LEFTPAR         reduce using rule 21 (statement_list -> .)
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    statement_list                 shift and go to state 32
+    var_declaration                shift and go to state 33
+    type_specifier                 shift and go to state 34
+
+state 32
+
+    (17) compound_stmt -> LEFTBRACE local_declarations statement_list . RIGHTBRACE
+    (20) statement_list -> statement_list . statement
+    (22) statement -> . compound_stmt
+    (23) statement -> . expression_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (17) compound_stmt -> . LEFTBRACE local_declarations statement_list RIGHTBRACE
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (29) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement
+    (30) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE LEFTPAR expression RIGHTPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    RIGHTBRACE      shift and go to state 35
+    LEFTBRACE       shift and go to state 27
+    SEMICOLON       shift and go to state 43
+    IF              shift and go to state 44
+    WHILE           shift and go to state 46
+    RETURN          shift and go to state 47
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    statement                      shift and go to state 36
+    compound_stmt                  shift and go to state 37
+    expression_stmt                shift and go to state 38
+    selection_stmt                 shift and go to state 39
+    iteration_stmt                 shift and go to state 40
+    return_stmt                    shift and go to state 41
+    expression                     shift and go to state 42
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 33
+
+    (18) local_declarations -> local_declarations var_declaration .
+
+    INT             reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    VOID            reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    RIGHTBRACE      reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    LEFTBRACE       reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    SEMICOLON       reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    IF              reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    WHILE           reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    RETURN          reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    ID              reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    NUM             reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    LEFTPAR         reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+
+
+state 34
+
+    (6) var_declaration -> type_specifier . ID LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+    (7) var_declaration -> type_specifier . ID SEMICOLON
+
+    ID              shift and go to state 56
+
+
+state 35
+
+    (17) compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .
+
+    ENDFILE         reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    INT             reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    VOID            reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    RIGHTBRACE      reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    LEFTBRACE       reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    SEMICOLON       reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    IF              reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    WHILE           reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    RETURN          reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    ID              reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    NUM             reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    LEFTPAR         reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+    ELSE            reduce using rule 17 (compound_stmt -> LEFTBRACE local_declarations statement_list RIGHTBRACE .)
+
+
+state 36
+
+    (20) statement_list -> statement_list statement .
+
+    RIGHTBRACE      reduce using rule 20 (statement_list -> statement_list statement .)
+    LEFTBRACE       reduce using rule 20 (statement_list -> statement_list statement .)
+    SEMICOLON       reduce using rule 20 (statement_list -> statement_list statement .)
+    IF              reduce using rule 20 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 20 (statement_list -> statement_list statement .)
+    RETURN          reduce using rule 20 (statement_list -> statement_list statement .)
+    ID              reduce using rule 20 (statement_list -> statement_list statement .)
+    NUM             reduce using rule 20 (statement_list -> statement_list statement .)
+    LEFTPAR         reduce using rule 20 (statement_list -> statement_list statement .)
+
+
+state 37
+
+    (22) statement -> compound_stmt .
+
+    RIGHTBRACE      reduce using rule 22 (statement -> compound_stmt .)
+    LEFTBRACE       reduce using rule 22 (statement -> compound_stmt .)
+    SEMICOLON       reduce using rule 22 (statement -> compound_stmt .)
+    IF              reduce using rule 22 (statement -> compound_stmt .)
+    WHILE           reduce using rule 22 (statement -> compound_stmt .)
+    RETURN          reduce using rule 22 (statement -> compound_stmt .)
+    ID              reduce using rule 22 (statement -> compound_stmt .)
+    NUM             reduce using rule 22 (statement -> compound_stmt .)
+    LEFTPAR         reduce using rule 22 (statement -> compound_stmt .)
+    ELSE            reduce using rule 22 (statement -> compound_stmt .)
+
+
+state 38
+
+    (23) statement -> expression_stmt .
+
+    RIGHTBRACE      reduce using rule 23 (statement -> expression_stmt .)
+    LEFTBRACE       reduce using rule 23 (statement -> expression_stmt .)
+    SEMICOLON       reduce using rule 23 (statement -> expression_stmt .)
+    IF              reduce using rule 23 (statement -> expression_stmt .)
+    WHILE           reduce using rule 23 (statement -> expression_stmt .)
+    RETURN          reduce using rule 23 (statement -> expression_stmt .)
+    ID              reduce using rule 23 (statement -> expression_stmt .)
+    NUM             reduce using rule 23 (statement -> expression_stmt .)
+    LEFTPAR         reduce using rule 23 (statement -> expression_stmt .)
+    ELSE            reduce using rule 23 (statement -> expression_stmt .)
+
+
+state 39
+
+    (24) statement -> selection_stmt .
+
+    RIGHTBRACE      reduce using rule 24 (statement -> selection_stmt .)
+    LEFTBRACE       reduce using rule 24 (statement -> selection_stmt .)
+    SEMICOLON       reduce using rule 24 (statement -> selection_stmt .)
+    IF              reduce using rule 24 (statement -> selection_stmt .)
+    WHILE           reduce using rule 24 (statement -> selection_stmt .)
+    RETURN          reduce using rule 24 (statement -> selection_stmt .)
+    ID              reduce using rule 24 (statement -> selection_stmt .)
+    NUM             reduce using rule 24 (statement -> selection_stmt .)
+    LEFTPAR         reduce using rule 24 (statement -> selection_stmt .)
+    ELSE            reduce using rule 24 (statement -> selection_stmt .)
+
+
+state 40
+
+    (25) statement -> iteration_stmt .
+
+    RIGHTBRACE      reduce using rule 25 (statement -> iteration_stmt .)
+    LEFTBRACE       reduce using rule 25 (statement -> iteration_stmt .)
+    SEMICOLON       reduce using rule 25 (statement -> iteration_stmt .)
+    IF              reduce using rule 25 (statement -> iteration_stmt .)
+    WHILE           reduce using rule 25 (statement -> iteration_stmt .)
+    RETURN          reduce using rule 25 (statement -> iteration_stmt .)
+    ID              reduce using rule 25 (statement -> iteration_stmt .)
+    NUM             reduce using rule 25 (statement -> iteration_stmt .)
+    LEFTPAR         reduce using rule 25 (statement -> iteration_stmt .)
+    ELSE            reduce using rule 25 (statement -> iteration_stmt .)
+
+
+state 41
+
+    (26) statement -> return_stmt .
+
+    RIGHTBRACE      reduce using rule 26 (statement -> return_stmt .)
+    LEFTBRACE       reduce using rule 26 (statement -> return_stmt .)
+    SEMICOLON       reduce using rule 26 (statement -> return_stmt .)
+    IF              reduce using rule 26 (statement -> return_stmt .)
+    WHILE           reduce using rule 26 (statement -> return_stmt .)
+    RETURN          reduce using rule 26 (statement -> return_stmt .)
+    ID              reduce using rule 26 (statement -> return_stmt .)
+    NUM             reduce using rule 26 (statement -> return_stmt .)
+    LEFTPAR         reduce using rule 26 (statement -> return_stmt .)
+    ELSE            reduce using rule 26 (statement -> return_stmt .)
+
+
+state 42
+
+    (27) expression_stmt -> expression . SEMICOLON
+
+    SEMICOLON       shift and go to state 57
+
+
+state 43
+
+    (28) expression_stmt -> SEMICOLON .
+
+    RIGHTBRACE      reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    LEFTBRACE       reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    SEMICOLON       reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    IF              reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    WHILE           reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    RETURN          reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    ID              reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    NUM             reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    LEFTPAR         reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    ELSE            reduce using rule 28 (expression_stmt -> SEMICOLON .)
+
+
+state 44
+
+    (29) selection_stmt -> IF . LEFTPAR expression RIGHTPAR statement
+    (30) selection_stmt -> IF . LEFTPAR expression RIGHTPAR statement ELSE statement
+
+    LEFTPAR         shift and go to state 58
+
+
+state 45
+
+    (55) factor -> LEFTPAR . expression RIGHTPAR
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 59
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 46
+
+    (31) iteration_stmt -> WHILE . LEFTPAR expression RIGHTPAR statement
+
+    LEFTPAR         shift and go to state 60
+
+
+state 47
+
+    (32) return_stmt -> RETURN . SEMICOLON
+    (33) return_stmt -> RETURN . expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    SEMICOLON       shift and go to state 61
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 62
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 48
+
+    (34) expression -> var . ASSIGN expression
+    (52) factor -> var .
+
+    ASSIGN          shift and go to state 63
+    MULT            reduce using rule 52 (factor -> var .)
+    DIV             reduce using rule 52 (factor -> var .)
+    LESSER          reduce using rule 52 (factor -> var .)
+    LESSEREQ        reduce using rule 52 (factor -> var .)
+    GREATER         reduce using rule 52 (factor -> var .)
+    GREATEREQ       reduce using rule 52 (factor -> var .)
+    EQ              reduce using rule 52 (factor -> var .)
+    NOTEQ           reduce using rule 52 (factor -> var .)
+    PLUS            reduce using rule 52 (factor -> var .)
+    MINUS           reduce using rule 52 (factor -> var .)
+    SEMICOLON       reduce using rule 52 (factor -> var .)
+    RIGHTPAR        reduce using rule 52 (factor -> var .)
+    RIGHTBRACKET    reduce using rule 52 (factor -> var .)
+    COMMA           reduce using rule 52 (factor -> var .)
+
+
+state 49
+
+    (35) expression -> simple_expression .
+
+    SEMICOLON       reduce using rule 35 (expression -> simple_expression .)
+    RIGHTPAR        reduce using rule 35 (expression -> simple_expression .)
+    RIGHTBRACKET    reduce using rule 35 (expression -> simple_expression .)
+    COMMA           reduce using rule 35 (expression -> simple_expression .)
+
+
+state 50
+
+    (61) var -> ID .
+    (62) var -> ID . LEFTBRACKET expression RIGHTBRACKET
+    (56) call -> ID . LEFTPAR args RIGHTPAR
+
+    ASSIGN          reduce using rule 61 (var -> ID .)
+    MULT            reduce using rule 61 (var -> ID .)
+    DIV             reduce using rule 61 (var -> ID .)
+    LESSER          reduce using rule 61 (var -> ID .)
+    LESSEREQ        reduce using rule 61 (var -> ID .)
+    GREATER         reduce using rule 61 (var -> ID .)
+    GREATEREQ       reduce using rule 61 (var -> ID .)
+    EQ              reduce using rule 61 (var -> ID .)
+    NOTEQ           reduce using rule 61 (var -> ID .)
+    PLUS            reduce using rule 61 (var -> ID .)
+    MINUS           reduce using rule 61 (var -> ID .)
+    SEMICOLON       reduce using rule 61 (var -> ID .)
+    RIGHTPAR        reduce using rule 61 (var -> ID .)
+    RIGHTBRACKET    reduce using rule 61 (var -> ID .)
+    COMMA           reduce using rule 61 (var -> ID .)
+    LEFTBRACKET     shift and go to state 64
+    LEFTPAR         shift and go to state 65
+
+
+state 51
+
+    (36) simple_expression -> additive_expression . relop additive_expression
+    (37) simple_expression -> additive_expression .
+    (44) additive_expression -> additive_expression . addop term
+    (38) relop -> . LESSER
+    (39) relop -> . LESSEREQ
+    (40) relop -> . GREATER
+    (41) relop -> . GREATEREQ
+    (42) relop -> . EQ
+    (43) relop -> . NOTEQ
+    (46) addop -> . PLUS
+    (47) addop -> . MINUS
+
+    SEMICOLON       reduce using rule 37 (simple_expression -> additive_expression .)
+    RIGHTPAR        reduce using rule 37 (simple_expression -> additive_expression .)
+    RIGHTBRACKET    reduce using rule 37 (simple_expression -> additive_expression .)
+    COMMA           reduce using rule 37 (simple_expression -> additive_expression .)
+    LESSER          shift and go to state 68
+    LESSEREQ        shift and go to state 69
+    GREATER         shift and go to state 70
+    GREATEREQ       shift and go to state 71
+    EQ              shift and go to state 72
+    NOTEQ           shift and go to state 73
+    PLUS            shift and go to state 74
+    MINUS           shift and go to state 75
+
+    relop                          shift and go to state 66
+    addop                          shift and go to state 67
+
+state 52
+
+    (45) additive_expression -> term .
+    (48) term -> term . mulop factor
+    (50) mulop -> . MULT
+    (51) mulop -> . DIV
+
+    LESSER          reduce using rule 45 (additive_expression -> term .)
+    LESSEREQ        reduce using rule 45 (additive_expression -> term .)
+    GREATER         reduce using rule 45 (additive_expression -> term .)
+    GREATEREQ       reduce using rule 45 (additive_expression -> term .)
+    EQ              reduce using rule 45 (additive_expression -> term .)
+    NOTEQ           reduce using rule 45 (additive_expression -> term .)
+    PLUS            reduce using rule 45 (additive_expression -> term .)
+    MINUS           reduce using rule 45 (additive_expression -> term .)
+    SEMICOLON       reduce using rule 45 (additive_expression -> term .)
+    RIGHTPAR        reduce using rule 45 (additive_expression -> term .)
+    RIGHTBRACKET    reduce using rule 45 (additive_expression -> term .)
+    COMMA           reduce using rule 45 (additive_expression -> term .)
+    MULT            shift and go to state 77
+    DIV             shift and go to state 78
+
+    mulop                          shift and go to state 76
+
+state 53
+
+    (49) term -> factor .
+
+    MULT            reduce using rule 49 (term -> factor .)
+    DIV             reduce using rule 49 (term -> factor .)
+    LESSER          reduce using rule 49 (term -> factor .)
+    LESSEREQ        reduce using rule 49 (term -> factor .)
+    GREATER         reduce using rule 49 (term -> factor .)
+    GREATEREQ       reduce using rule 49 (term -> factor .)
+    EQ              reduce using rule 49 (term -> factor .)
+    NOTEQ           reduce using rule 49 (term -> factor .)
+    PLUS            reduce using rule 49 (term -> factor .)
+    MINUS           reduce using rule 49 (term -> factor .)
+    SEMICOLON       reduce using rule 49 (term -> factor .)
+    RIGHTPAR        reduce using rule 49 (term -> factor .)
+    RIGHTBRACKET    reduce using rule 49 (term -> factor .)
+    COMMA           reduce using rule 49 (term -> factor .)
+
+
+state 54
+
+    (53) factor -> call .
+
+    MULT            reduce using rule 53 (factor -> call .)
+    DIV             reduce using rule 53 (factor -> call .)
+    LESSER          reduce using rule 53 (factor -> call .)
+    LESSEREQ        reduce using rule 53 (factor -> call .)
+    GREATER         reduce using rule 53 (factor -> call .)
+    GREATEREQ       reduce using rule 53 (factor -> call .)
+    EQ              reduce using rule 53 (factor -> call .)
+    NOTEQ           reduce using rule 53 (factor -> call .)
+    PLUS            reduce using rule 53 (factor -> call .)
+    MINUS           reduce using rule 53 (factor -> call .)
+    SEMICOLON       reduce using rule 53 (factor -> call .)
+    RIGHTPAR        reduce using rule 53 (factor -> call .)
+    RIGHTBRACKET    reduce using rule 53 (factor -> call .)
+    COMMA           reduce using rule 53 (factor -> call .)
+
+
+state 55
+
+    (54) factor -> NUM .
+
+    MULT            reduce using rule 54 (factor -> NUM .)
+    DIV             reduce using rule 54 (factor -> NUM .)
+    LESSER          reduce using rule 54 (factor -> NUM .)
+    LESSEREQ        reduce using rule 54 (factor -> NUM .)
+    GREATER         reduce using rule 54 (factor -> NUM .)
+    GREATEREQ       reduce using rule 54 (factor -> NUM .)
+    EQ              reduce using rule 54 (factor -> NUM .)
+    NOTEQ           reduce using rule 54 (factor -> NUM .)
+    PLUS            reduce using rule 54 (factor -> NUM .)
+    MINUS           reduce using rule 54 (factor -> NUM .)
+    SEMICOLON       reduce using rule 54 (factor -> NUM .)
+    RIGHTPAR        reduce using rule 54 (factor -> NUM .)
+    RIGHTBRACKET    reduce using rule 54 (factor -> NUM .)
+    COMMA           reduce using rule 54 (factor -> NUM .)
+
+
+state 56
+
+    (6) var_declaration -> type_specifier ID . LEFTBRACKET NUM RIGHTBRACKET SEMICOLON
+    (7) var_declaration -> type_specifier ID . SEMICOLON
+
+    LEFTBRACKET     shift and go to state 13
+    SEMICOLON       shift and go to state 14
+
+
+state 57
+
+    (27) expression_stmt -> expression SEMICOLON .
+
+    RIGHTBRACE      reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    LEFTBRACE       reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    SEMICOLON       reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    IF              reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    WHILE           reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    RETURN          reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    ID              reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    NUM             reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    LEFTPAR         reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    ELSE            reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+
+
+state 58
+
+    (29) selection_stmt -> IF LEFTPAR . expression RIGHTPAR statement
+    (30) selection_stmt -> IF LEFTPAR . expression RIGHTPAR statement ELSE statement
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 79
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 59
+
+    (55) factor -> LEFTPAR expression . RIGHTPAR
+
+    RIGHTPAR        shift and go to state 80
+
+
+state 60
+
+    (31) iteration_stmt -> WHILE LEFTPAR . expression RIGHTPAR statement
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 81
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 61
+
+    (32) return_stmt -> RETURN SEMICOLON .
+
+    RIGHTBRACE      reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    LEFTBRACE       reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    SEMICOLON       reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    IF              reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    WHILE           reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    RETURN          reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    ID              reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    NUM             reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    LEFTPAR         reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    ELSE            reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+
+
+state 62
+
+    (33) return_stmt -> RETURN expression . SEMICOLON
+
+    SEMICOLON       shift and go to state 82
+
+
+state 63
+
+    (34) expression -> var ASSIGN . expression
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    var                            shift and go to state 48
+    expression                     shift and go to state 83
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 64
+
+    (62) var -> ID LEFTBRACKET . expression RIGHTBRACKET
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 84
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 65
+
+    (56) call -> ID LEFTPAR . args RIGHTPAR
+    (57) args -> . arg_list
+    (58) args -> .
+    (59) arg_list -> . arg_list COMMA expression
+    (60) arg_list -> . expression
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    RIGHTPAR        reduce using rule 58 (args -> .)
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    args                           shift and go to state 85
+    arg_list                       shift and go to state 86
+    expression                     shift and go to state 87
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 66
+
+    (36) simple_expression -> additive_expression relop . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+    ID              shift and go to state 50
+
+    additive_expression            shift and go to state 88
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    var                            shift and go to state 89
+    call                           shift and go to state 54
+
+state 67
+
+    (44) additive_expression -> additive_expression addop . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+    ID              shift and go to state 50
+
+    term                           shift and go to state 90
+    factor                         shift and go to state 53
+    var                            shift and go to state 89
+    call                           shift and go to state 54
+
+state 68
+
+    (38) relop -> LESSER .
+
+    NUM             reduce using rule 38 (relop -> LESSER .)
+    LEFTPAR         reduce using rule 38 (relop -> LESSER .)
+    ID              reduce using rule 38 (relop -> LESSER .)
+
+
+state 69
+
+    (39) relop -> LESSEREQ .
+
+    NUM             reduce using rule 39 (relop -> LESSEREQ .)
+    LEFTPAR         reduce using rule 39 (relop -> LESSEREQ .)
+    ID              reduce using rule 39 (relop -> LESSEREQ .)
+
+
+state 70
+
+    (40) relop -> GREATER .
+
+    NUM             reduce using rule 40 (relop -> GREATER .)
+    LEFTPAR         reduce using rule 40 (relop -> GREATER .)
+    ID              reduce using rule 40 (relop -> GREATER .)
+
+
+state 71
+
+    (41) relop -> GREATEREQ .
+
+    NUM             reduce using rule 41 (relop -> GREATEREQ .)
+    LEFTPAR         reduce using rule 41 (relop -> GREATEREQ .)
+    ID              reduce using rule 41 (relop -> GREATEREQ .)
+
+
+state 72
+
+    (42) relop -> EQ .
+
+    NUM             reduce using rule 42 (relop -> EQ .)
+    LEFTPAR         reduce using rule 42 (relop -> EQ .)
+    ID              reduce using rule 42 (relop -> EQ .)
+
+
+state 73
+
+    (43) relop -> NOTEQ .
+
+    NUM             reduce using rule 43 (relop -> NOTEQ .)
+    LEFTPAR         reduce using rule 43 (relop -> NOTEQ .)
+    ID              reduce using rule 43 (relop -> NOTEQ .)
+
+
+state 74
+
+    (46) addop -> PLUS .
+
+    NUM             reduce using rule 46 (addop -> PLUS .)
+    LEFTPAR         reduce using rule 46 (addop -> PLUS .)
+    ID              reduce using rule 46 (addop -> PLUS .)
+
+
+state 75
+
+    (47) addop -> MINUS .
+
+    NUM             reduce using rule 47 (addop -> MINUS .)
+    LEFTPAR         reduce using rule 47 (addop -> MINUS .)
+    ID              reduce using rule 47 (addop -> MINUS .)
+
+
+state 76
+
+    (48) term -> term mulop . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+    ID              shift and go to state 50
+
+    factor                         shift and go to state 91
+    var                            shift and go to state 89
+    call                           shift and go to state 54
+
+state 77
+
+    (50) mulop -> MULT .
+
+    NUM             reduce using rule 50 (mulop -> MULT .)
+    LEFTPAR         reduce using rule 50 (mulop -> MULT .)
+    ID              reduce using rule 50 (mulop -> MULT .)
+
+
+state 78
+
+    (51) mulop -> DIV .
+
+    NUM             reduce using rule 51 (mulop -> DIV .)
+    LEFTPAR         reduce using rule 51 (mulop -> DIV .)
+    ID              reduce using rule 51 (mulop -> DIV .)
+
+
+state 79
+
+    (29) selection_stmt -> IF LEFTPAR expression . RIGHTPAR statement
+    (30) selection_stmt -> IF LEFTPAR expression . RIGHTPAR statement ELSE statement
+
+    RIGHTPAR        shift and go to state 92
+
+
+state 80
+
+    (55) factor -> LEFTPAR expression RIGHTPAR .
+
+    MULT            reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    DIV             reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    LESSER          reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    LESSEREQ        reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    GREATER         reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    GREATEREQ       reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    EQ              reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    NOTEQ           reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    PLUS            reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    MINUS           reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    SEMICOLON       reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    RIGHTPAR        reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    RIGHTBRACKET    reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+    COMMA           reduce using rule 55 (factor -> LEFTPAR expression RIGHTPAR .)
+
+
+state 81
+
+    (31) iteration_stmt -> WHILE LEFTPAR expression . RIGHTPAR statement
+
+    RIGHTPAR        shift and go to state 93
+
+
+state 82
+
+    (33) return_stmt -> RETURN expression SEMICOLON .
+
+    RIGHTBRACE      reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    LEFTBRACE       reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    SEMICOLON       reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    IF              reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    WHILE           reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    RETURN          reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    ID              reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    NUM             reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    LEFTPAR         reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    ELSE            reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+
+
+state 83
+
+    (34) expression -> var ASSIGN expression .
+
+    SEMICOLON       reduce using rule 34 (expression -> var ASSIGN expression .)
+    RIGHTPAR        reduce using rule 34 (expression -> var ASSIGN expression .)
+    RIGHTBRACKET    reduce using rule 34 (expression -> var ASSIGN expression .)
+    COMMA           reduce using rule 34 (expression -> var ASSIGN expression .)
+
+
+state 84
+
+    (62) var -> ID LEFTBRACKET expression . RIGHTBRACKET
+
+    RIGHTBRACKET    shift and go to state 94
+
+
+state 85
+
+    (56) call -> ID LEFTPAR args . RIGHTPAR
+
+    RIGHTPAR        shift and go to state 95
+
+
+state 86
+
+    (57) args -> arg_list .
+    (59) arg_list -> arg_list . COMMA expression
+
+    RIGHTPAR        reduce using rule 57 (args -> arg_list .)
+    COMMA           shift and go to state 96
+
+
+state 87
+
+    (60) arg_list -> expression .
+
+    COMMA           reduce using rule 60 (arg_list -> expression .)
+    RIGHTPAR        reduce using rule 60 (arg_list -> expression .)
+
+
+state 88
+
+    (36) simple_expression -> additive_expression relop additive_expression .
+    (44) additive_expression -> additive_expression . addop term
+    (46) addop -> . PLUS
+    (47) addop -> . MINUS
+
+    SEMICOLON       reduce using rule 36 (simple_expression -> additive_expression relop additive_expression .)
+    RIGHTPAR        reduce using rule 36 (simple_expression -> additive_expression relop additive_expression .)
+    RIGHTBRACKET    reduce using rule 36 (simple_expression -> additive_expression relop additive_expression .)
+    COMMA           reduce using rule 36 (simple_expression -> additive_expression relop additive_expression .)
+    PLUS            shift and go to state 74
+    MINUS           shift and go to state 75
+
+    addop                          shift and go to state 67
+
+state 89
+
+    (52) factor -> var .
+
+    MULT            reduce using rule 52 (factor -> var .)
+    DIV             reduce using rule 52 (factor -> var .)
+    PLUS            reduce using rule 52 (factor -> var .)
+    MINUS           reduce using rule 52 (factor -> var .)
+    SEMICOLON       reduce using rule 52 (factor -> var .)
+    RIGHTPAR        reduce using rule 52 (factor -> var .)
+    RIGHTBRACKET    reduce using rule 52 (factor -> var .)
+    COMMA           reduce using rule 52 (factor -> var .)
+    LESSER          reduce using rule 52 (factor -> var .)
+    LESSEREQ        reduce using rule 52 (factor -> var .)
+    GREATER         reduce using rule 52 (factor -> var .)
+    GREATEREQ       reduce using rule 52 (factor -> var .)
+    EQ              reduce using rule 52 (factor -> var .)
+    NOTEQ           reduce using rule 52 (factor -> var .)
+
+
+state 90
+
+    (44) additive_expression -> additive_expression addop term .
+    (48) term -> term . mulop factor
+    (50) mulop -> . MULT
+    (51) mulop -> . DIV
+
+    LESSER          reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    LESSEREQ        reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    GREATER         reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    GREATEREQ       reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    EQ              reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    NOTEQ           reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    PLUS            reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    MINUS           reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    SEMICOLON       reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    RIGHTPAR        reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    RIGHTBRACKET    reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    COMMA           reduce using rule 44 (additive_expression -> additive_expression addop term .)
+    MULT            shift and go to state 77
+    DIV             shift and go to state 78
+
+    mulop                          shift and go to state 76
+
+state 91
+
+    (48) term -> term mulop factor .
+
+    MULT            reduce using rule 48 (term -> term mulop factor .)
+    DIV             reduce using rule 48 (term -> term mulop factor .)
+    LESSER          reduce using rule 48 (term -> term mulop factor .)
+    LESSEREQ        reduce using rule 48 (term -> term mulop factor .)
+    GREATER         reduce using rule 48 (term -> term mulop factor .)
+    GREATEREQ       reduce using rule 48 (term -> term mulop factor .)
+    EQ              reduce using rule 48 (term -> term mulop factor .)
+    NOTEQ           reduce using rule 48 (term -> term mulop factor .)
+    PLUS            reduce using rule 48 (term -> term mulop factor .)
+    MINUS           reduce using rule 48 (term -> term mulop factor .)
+    SEMICOLON       reduce using rule 48 (term -> term mulop factor .)
+    RIGHTPAR        reduce using rule 48 (term -> term mulop factor .)
+    RIGHTBRACKET    reduce using rule 48 (term -> term mulop factor .)
+    COMMA           reduce using rule 48 (term -> term mulop factor .)
+
+
+state 92
+
+    (29) selection_stmt -> IF LEFTPAR expression RIGHTPAR . statement
+    (30) selection_stmt -> IF LEFTPAR expression RIGHTPAR . statement ELSE statement
+    (22) statement -> . compound_stmt
+    (23) statement -> . expression_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (17) compound_stmt -> . LEFTBRACE local_declarations statement_list RIGHTBRACE
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (29) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement
+    (30) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE LEFTPAR expression RIGHTPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    LEFTBRACE       shift and go to state 27
+    SEMICOLON       shift and go to state 43
+    IF              shift and go to state 44
+    WHILE           shift and go to state 46
+    RETURN          shift and go to state 47
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 42
+    statement                      shift and go to state 97
+    compound_stmt                  shift and go to state 37
+    expression_stmt                shift and go to state 38
+    selection_stmt                 shift and go to state 39
+    iteration_stmt                 shift and go to state 40
+    return_stmt                    shift and go to state 41
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 93
+
+    (31) iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR . statement
+    (22) statement -> . compound_stmt
+    (23) statement -> . expression_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (17) compound_stmt -> . LEFTBRACE local_declarations statement_list RIGHTBRACE
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (29) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement
+    (30) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE LEFTPAR expression RIGHTPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    LEFTBRACE       shift and go to state 27
+    SEMICOLON       shift and go to state 43
+    IF              shift and go to state 44
+    WHILE           shift and go to state 46
+    RETURN          shift and go to state 47
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 42
+    statement                      shift and go to state 98
+    compound_stmt                  shift and go to state 37
+    expression_stmt                shift and go to state 38
+    selection_stmt                 shift and go to state 39
+    iteration_stmt                 shift and go to state 40
+    return_stmt                    shift and go to state 41
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 94
+
+    (62) var -> ID LEFTBRACKET expression RIGHTBRACKET .
+
+    ASSIGN          reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    MULT            reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    DIV             reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    LESSER          reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    LESSEREQ        reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    GREATER         reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    GREATEREQ       reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    EQ              reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    NOTEQ           reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    PLUS            reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    MINUS           reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    SEMICOLON       reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    RIGHTPAR        reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    RIGHTBRACKET    reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+    COMMA           reduce using rule 62 (var -> ID LEFTBRACKET expression RIGHTBRACKET .)
+
+
+state 95
+
+    (56) call -> ID LEFTPAR args RIGHTPAR .
+
+    MULT            reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    DIV             reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    LESSER          reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    LESSEREQ        reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    GREATER         reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    GREATEREQ       reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    EQ              reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    NOTEQ           reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    PLUS            reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    MINUS           reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    SEMICOLON       reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    RIGHTPAR        reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    RIGHTBRACKET    reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+    COMMA           reduce using rule 56 (call -> ID LEFTPAR args RIGHTPAR .)
+
+
+state 96
+
+    (59) arg_list -> arg_list COMMA . expression
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 99
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 97
+
+    (29) selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .
+    (30) selection_stmt -> IF LEFTPAR expression RIGHTPAR statement . ELSE statement
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    RIGHTBRACE      reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    LEFTBRACE       reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    SEMICOLON       reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    IF              reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    WHILE           reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    RETURN          reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    ID              reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    NUM             reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    LEFTPAR         reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .)
+    ELSE            shift and go to state 100
+
+  ! ELSE            [ reduce using rule 29 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement .) ]
+
+
+state 98
+
+    (31) iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .
+
+    RIGHTBRACE      reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    LEFTBRACE       reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    SEMICOLON       reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    IF              reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    WHILE           reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    RETURN          reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    ID              reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    NUM             reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    LEFTPAR         reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+    ELSE            reduce using rule 31 (iteration_stmt -> WHILE LEFTPAR expression RIGHTPAR statement .)
+
+
+state 99
+
+    (59) arg_list -> arg_list COMMA expression .
+
+    COMMA           reduce using rule 59 (arg_list -> arg_list COMMA expression .)
+    RIGHTPAR        reduce using rule 59 (arg_list -> arg_list COMMA expression .)
+
+
+state 100
+
+    (30) selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE . statement
+    (22) statement -> . compound_stmt
+    (23) statement -> . expression_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (17) compound_stmt -> . LEFTBRACE local_declarations statement_list RIGHTBRACE
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (29) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement
+    (30) selection_stmt -> . IF LEFTPAR expression RIGHTPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE LEFTPAR expression RIGHTPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (61) var -> . ID
+    (62) var -> . ID LEFTBRACKET expression RIGHTBRACKET
+    (36) simple_expression -> . additive_expression relop additive_expression
+    (37) simple_expression -> . additive_expression
+    (44) additive_expression -> . additive_expression addop term
+    (45) additive_expression -> . term
+    (48) term -> . term mulop factor
+    (49) term -> . factor
+    (52) factor -> . var
+    (53) factor -> . call
+    (54) factor -> . NUM
+    (55) factor -> . LEFTPAR expression RIGHTPAR
+    (56) call -> . ID LEFTPAR args RIGHTPAR
+
+    LEFTBRACE       shift and go to state 27
+    SEMICOLON       shift and go to state 43
+    IF              shift and go to state 44
+    WHILE           shift and go to state 46
+    RETURN          shift and go to state 47
+    ID              shift and go to state 50
+    NUM             shift and go to state 55
+    LEFTPAR         shift and go to state 45
+
+    expression                     shift and go to state 42
+    statement                      shift and go to state 101
+    compound_stmt                  shift and go to state 37
+    expression_stmt                shift and go to state 38
+    selection_stmt                 shift and go to state 39
+    iteration_stmt                 shift and go to state 40
+    return_stmt                    shift and go to state 41
+    var                            shift and go to state 48
+    simple_expression              shift and go to state 49
+    additive_expression            shift and go to state 51
+    term                           shift and go to state 52
+    factor                         shift and go to state 53
+    call                           shift and go to state 54
+
+state 101
+
+    (30) selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .
+
+    RIGHTBRACE      reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    LEFTBRACE       reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    SEMICOLON       reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    IF              reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    WHILE           reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    RETURN          reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    ID              reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    NUM             reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    LEFTPAR         reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+    ELSE            reduce using rule 30 (selection_stmt -> IF LEFTPAR expression RIGHTPAR statement ELSE statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ELSE in state 97 resolved as shift

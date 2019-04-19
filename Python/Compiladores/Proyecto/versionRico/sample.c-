@@ -1,0 +1,8 @@
+int variable ( void var, int var ) {
+    test = x;
+    test = y;
+    test = z;
+    test = a;
+    test = b;
+    test = c;
+}

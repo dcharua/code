@@ -1,0 +1,1869 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+    SPACE
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> declaration_list ENDFILE
+Rule 2     declaration_list -> declaration_list declaration
+Rule 3     declaration_list -> declaration
+Rule 4     declaration -> fun_declaration
+Rule 5     declaration -> var_declaration
+Rule 6     var_declaration -> type_specifier ID SEMICOLON
+Rule 7     var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON
+Rule 8     type_specifier -> INT
+Rule 9     type_specifier -> VOID
+Rule 10    fun_declaration -> type_specifier ID OPENPAR params CLOSEPAR compound_stmt
+Rule 11    params -> param_list
+Rule 12    params -> VOID
+Rule 13    param_list -> param_list COMMA param
+Rule 14    param_list -> param
+Rule 15    param -> type_specifier ID
+Rule 16    param -> type_specifier ID OPENBRACKSQ CLOSEBRACKSQ
+Rule 17    compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK
+Rule 18    local_declarations -> local_declarations var_declaration
+Rule 19    local_declarations -> empty
+Rule 20    statement_list -> statement_list statement
+Rule 21    statement_list -> empty
+Rule 22    statement -> expression_stmt
+Rule 23    statement -> compound_stmt
+Rule 24    statement -> selection_stmt
+Rule 25    statement -> iteration_stmt
+Rule 26    statement -> return_stmt
+Rule 27    expression_stmt -> expression SEMICOLON
+Rule 28    expression_stmt -> SEMICOLON
+Rule 29    selection_stmt -> IF OPENPAR expression CLOSEPAR statement
+Rule 30    selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement
+Rule 31    iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement
+Rule 32    return_stmt -> RETURN SEMICOLON
+Rule 33    return_stmt -> RETURN expression SEMICOLON
+Rule 34    expression -> var ASSIGN expression
+Rule 35    expression -> simple_expression
+Rule 36    var -> ID
+Rule 37    var -> ID OPENBRACKSQ expression CLOSEBRACKSQ
+Rule 38    simple_expression -> additive_expression relop additive_expression
+Rule 39    simple_expression -> additive_expression
+Rule 40    relop -> LESSOREQUAL
+Rule 41    relop -> LESS
+Rule 42    relop -> MORE
+Rule 43    relop -> MOREOREQUAL
+Rule 44    relop -> EQUALS
+Rule 45    relop -> DIFFERENT
+Rule 46    additive_expression -> additive_expression addop term
+Rule 47    additive_expression -> term
+Rule 48    addop -> PLUS
+Rule 49    addop -> MINUS
+Rule 50    term -> term mulop factor
+Rule 51    term -> factor
+Rule 52    mulop -> MULTIPLY
+Rule 53    mulop -> DIVIDE
+Rule 54    factor -> OPENPAR expression CLOSEPAR
+Rule 55    factor -> var
+Rule 56    factor -> call
+Rule 57    factor -> NUM
+Rule 58    call -> ID OPENPAR args CLOSEPAR
+Rule 59    args -> arg_list
+Rule 60    args -> empty
+Rule 61    arg_list -> arg_list COMMA expression
+Rule 62    arg_list -> expression
+Rule 63    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ASSIGN               : 34
+CLOSEBRACK           : 17
+CLOSEBRACKSQ         : 7 16 37
+CLOSEPAR             : 10 29 30 31 54 58
+COMMA                : 13 61
+COMMENT              : 
+DIFFERENT            : 45
+DIVIDE               : 53
+ELSE                 : 30
+ENDFILE              : 1
+EQUALS               : 44
+ID                   : 6 7 10 15 16 36 37 58
+IF                   : 29 30
+INT                  : 8
+LESS                 : 41
+LESSOREQUAL          : 40
+MINUS                : 49
+MORE                 : 42
+MOREOREQUAL          : 43
+MULTIPLY             : 52
+NUM                  : 7 57
+OPENBRACK            : 17
+OPENBRACKSQ          : 7 16 37
+OPENPAR              : 10 29 30 31 54 58
+PLUS                 : 48
+RETURN               : 32 33
+SEMICOLON            : 6 7 27 28 32 33
+SPACE                : 
+VOID                 : 9 12
+WHILE                : 31
+error                : 
+
+Nonterminals, with rules where they appear
+
+additive_expression  : 38 38 39 46
+addop                : 46
+arg_list             : 59 61
+args                 : 58
+call                 : 56
+compound_stmt        : 10 23
+declaration          : 2 3
+declaration_list     : 1 2
+empty                : 19 21 60
+expression           : 27 29 30 31 33 34 37 54 61 62
+expression_stmt      : 22
+factor               : 50 51
+fun_declaration      : 4
+iteration_stmt       : 25
+local_declarations   : 17 18
+mulop                : 50
+param                : 13 14
+param_list           : 11 13
+params               : 10
+program              : 0
+relop                : 38
+return_stmt          : 26
+selection_stmt       : 24
+simple_expression    : 35
+statement            : 20 29 30 30 31
+statement_list       : 17 20
+term                 : 46 47 50
+type_specifier       : 6 7 10 15 16
+var                  : 34 55
+var_declaration      : 5 18
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . declaration_list ENDFILE
+    (2) declaration_list -> . declaration_list declaration
+    (3) declaration_list -> . declaration
+    (4) declaration -> . fun_declaration
+    (5) declaration -> . var_declaration
+    (10) fun_declaration -> . type_specifier ID OPENPAR params CLOSEPAR compound_stmt
+    (6) var_declaration -> . type_specifier ID SEMICOLON
+    (7) var_declaration -> . type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    program                        shift and go to state 1
+    declaration_list               shift and go to state 2
+    declaration                    shift and go to state 3
+    fun_declaration                shift and go to state 4
+    var_declaration                shift and go to state 5
+    type_specifier                 shift and go to state 6
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> declaration_list . ENDFILE
+    (2) declaration_list -> declaration_list . declaration
+    (4) declaration -> . fun_declaration
+    (5) declaration -> . var_declaration
+    (10) fun_declaration -> . type_specifier ID OPENPAR params CLOSEPAR compound_stmt
+    (6) var_declaration -> . type_specifier ID SEMICOLON
+    (7) var_declaration -> . type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    ENDFILE         shift and go to state 9
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    declaration                    shift and go to state 10
+    fun_declaration                shift and go to state 4
+    var_declaration                shift and go to state 5
+    type_specifier                 shift and go to state 6
+
+state 3
+
+    (3) declaration_list -> declaration .
+
+    ENDFILE         reduce using rule 3 (declaration_list -> declaration .)
+    INT             reduce using rule 3 (declaration_list -> declaration .)
+    VOID            reduce using rule 3 (declaration_list -> declaration .)
+
+
+state 4
+
+    (4) declaration -> fun_declaration .
+
+    ENDFILE         reduce using rule 4 (declaration -> fun_declaration .)
+    INT             reduce using rule 4 (declaration -> fun_declaration .)
+    VOID            reduce using rule 4 (declaration -> fun_declaration .)
+
+
+state 5
+
+    (5) declaration -> var_declaration .
+
+    ENDFILE         reduce using rule 5 (declaration -> var_declaration .)
+    INT             reduce using rule 5 (declaration -> var_declaration .)
+    VOID            reduce using rule 5 (declaration -> var_declaration .)
+
+
+state 6
+
+    (10) fun_declaration -> type_specifier . ID OPENPAR params CLOSEPAR compound_stmt
+    (6) var_declaration -> type_specifier . ID SEMICOLON
+    (7) var_declaration -> type_specifier . OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON
+
+    ID              shift and go to state 11
+    OPENBRACKSQ     shift and go to state 12
+
+
+state 7
+
+    (8) type_specifier -> INT .
+
+    ID              reduce using rule 8 (type_specifier -> INT .)
+    OPENBRACKSQ     reduce using rule 8 (type_specifier -> INT .)
+
+
+state 8
+
+    (9) type_specifier -> VOID .
+
+    ID              reduce using rule 9 (type_specifier -> VOID .)
+    OPENBRACKSQ     reduce using rule 9 (type_specifier -> VOID .)
+
+
+state 9
+
+    (1) program -> declaration_list ENDFILE .
+
+    $end            reduce using rule 1 (program -> declaration_list ENDFILE .)
+
+
+state 10
+
+    (2) declaration_list -> declaration_list declaration .
+
+    ENDFILE         reduce using rule 2 (declaration_list -> declaration_list declaration .)
+    INT             reduce using rule 2 (declaration_list -> declaration_list declaration .)
+    VOID            reduce using rule 2 (declaration_list -> declaration_list declaration .)
+
+
+state 11
+
+    (10) fun_declaration -> type_specifier ID . OPENPAR params CLOSEPAR compound_stmt
+    (6) var_declaration -> type_specifier ID . SEMICOLON
+
+    OPENPAR         shift and go to state 13
+    SEMICOLON       shift and go to state 14
+
+
+state 12
+
+    (7) var_declaration -> type_specifier OPENBRACKSQ . ID NUM CLOSEBRACKSQ SEMICOLON
+
+    ID              shift and go to state 15
+
+
+state 13
+
+    (10) fun_declaration -> type_specifier ID OPENPAR . params CLOSEPAR compound_stmt
+    (11) params -> . param_list
+    (12) params -> . VOID
+    (13) param_list -> . param_list COMMA param
+    (14) param_list -> . param
+    (15) param -> . type_specifier ID
+    (16) param -> . type_specifier ID OPENBRACKSQ CLOSEBRACKSQ
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    VOID            shift and go to state 19
+    INT             shift and go to state 7
+
+    type_specifier                 shift and go to state 16
+    params                         shift and go to state 17
+    param_list                     shift and go to state 18
+    param                          shift and go to state 20
+
+state 14
+
+    (6) var_declaration -> type_specifier ID SEMICOLON .
+
+    ENDFILE         reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    INT             reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    VOID            reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    CLOSEBRACK      reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    SEMICOLON       reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    OPENBRACK       reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    IF              reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    WHILE           reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    RETURN          reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    ID              reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    OPENPAR         reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+    NUM             reduce using rule 6 (var_declaration -> type_specifier ID SEMICOLON .)
+
+
+state 15
+
+    (7) var_declaration -> type_specifier OPENBRACKSQ ID . NUM CLOSEBRACKSQ SEMICOLON
+
+    NUM             shift and go to state 21
+
+
+state 16
+
+    (15) param -> type_specifier . ID
+    (16) param -> type_specifier . ID OPENBRACKSQ CLOSEBRACKSQ
+
+    ID              shift and go to state 22
+
+
+state 17
+
+    (10) fun_declaration -> type_specifier ID OPENPAR params . CLOSEPAR compound_stmt
+
+    CLOSEPAR        shift and go to state 23
+
+
+state 18
+
+    (11) params -> param_list .
+    (13) param_list -> param_list . COMMA param
+
+    CLOSEPAR        reduce using rule 11 (params -> param_list .)
+    COMMA           shift and go to state 24
+
+
+state 19
+
+    (12) params -> VOID .
+    (9) type_specifier -> VOID .
+
+    CLOSEPAR        reduce using rule 12 (params -> VOID .)
+    ID              reduce using rule 9 (type_specifier -> VOID .)
+
+
+state 20
+
+    (14) param_list -> param .
+
+    COMMA           reduce using rule 14 (param_list -> param .)
+    CLOSEPAR        reduce using rule 14 (param_list -> param .)
+
+
+state 21
+
+    (7) var_declaration -> type_specifier OPENBRACKSQ ID NUM . CLOSEBRACKSQ SEMICOLON
+
+    CLOSEBRACKSQ    shift and go to state 25
+
+
+state 22
+
+    (15) param -> type_specifier ID .
+    (16) param -> type_specifier ID . OPENBRACKSQ CLOSEBRACKSQ
+
+    COMMA           reduce using rule 15 (param -> type_specifier ID .)
+    CLOSEPAR        reduce using rule 15 (param -> type_specifier ID .)
+    OPENBRACKSQ     shift and go to state 26
+
+
+state 23
+
+    (10) fun_declaration -> type_specifier ID OPENPAR params CLOSEPAR . compound_stmt
+    (17) compound_stmt -> . OPENBRACK local_declarations statement_list CLOSEBRACK
+
+    OPENBRACK       shift and go to state 28
+
+    compound_stmt                  shift and go to state 27
+
+state 24
+
+    (13) param_list -> param_list COMMA . param
+    (15) param -> . type_specifier ID
+    (16) param -> . type_specifier ID OPENBRACKSQ CLOSEBRACKSQ
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    param                          shift and go to state 29
+    type_specifier                 shift and go to state 16
+
+state 25
+
+    (7) var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ . SEMICOLON
+
+    SEMICOLON       shift and go to state 30
+
+
+state 26
+
+    (16) param -> type_specifier ID OPENBRACKSQ . CLOSEBRACKSQ
+
+    CLOSEBRACKSQ    shift and go to state 31
+
+
+state 27
+
+    (10) fun_declaration -> type_specifier ID OPENPAR params CLOSEPAR compound_stmt .
+
+    ENDFILE         reduce using rule 10 (fun_declaration -> type_specifier ID OPENPAR params CLOSEPAR compound_stmt .)
+    INT             reduce using rule 10 (fun_declaration -> type_specifier ID OPENPAR params CLOSEPAR compound_stmt .)
+    VOID            reduce using rule 10 (fun_declaration -> type_specifier ID OPENPAR params CLOSEPAR compound_stmt .)
+
+
+state 28
+
+    (17) compound_stmt -> OPENBRACK . local_declarations statement_list CLOSEBRACK
+    (18) local_declarations -> . local_declarations var_declaration
+    (19) local_declarations -> . empty
+    (63) empty -> .
+
+    INT             reduce using rule 63 (empty -> .)
+    VOID            reduce using rule 63 (empty -> .)
+    CLOSEBRACK      reduce using rule 63 (empty -> .)
+    SEMICOLON       reduce using rule 63 (empty -> .)
+    OPENBRACK       reduce using rule 63 (empty -> .)
+    IF              reduce using rule 63 (empty -> .)
+    WHILE           reduce using rule 63 (empty -> .)
+    RETURN          reduce using rule 63 (empty -> .)
+    ID              reduce using rule 63 (empty -> .)
+    OPENPAR         reduce using rule 63 (empty -> .)
+    NUM             reduce using rule 63 (empty -> .)
+
+    local_declarations             shift and go to state 32
+    empty                          shift and go to state 33
+
+state 29
+
+    (13) param_list -> param_list COMMA param .
+
+    COMMA           reduce using rule 13 (param_list -> param_list COMMA param .)
+    CLOSEPAR        reduce using rule 13 (param_list -> param_list COMMA param .)
+
+
+state 30
+
+    (7) var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .
+
+    ENDFILE         reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    INT             reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    VOID            reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    CLOSEBRACK      reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    SEMICOLON       reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    OPENBRACK       reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    IF              reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    WHILE           reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    RETURN          reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    ID              reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    OPENPAR         reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+    NUM             reduce using rule 7 (var_declaration -> type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON .)
+
+
+state 31
+
+    (16) param -> type_specifier ID OPENBRACKSQ CLOSEBRACKSQ .
+
+    COMMA           reduce using rule 16 (param -> type_specifier ID OPENBRACKSQ CLOSEBRACKSQ .)
+    CLOSEPAR        reduce using rule 16 (param -> type_specifier ID OPENBRACKSQ CLOSEBRACKSQ .)
+
+
+state 32
+
+    (17) compound_stmt -> OPENBRACK local_declarations . statement_list CLOSEBRACK
+    (18) local_declarations -> local_declarations . var_declaration
+    (20) statement_list -> . statement_list statement
+    (21) statement_list -> . empty
+    (6) var_declaration -> . type_specifier ID SEMICOLON
+    (7) var_declaration -> . type_specifier OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON
+    (63) empty -> .
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . VOID
+
+    CLOSEBRACK      reduce using rule 63 (empty -> .)
+    SEMICOLON       reduce using rule 63 (empty -> .)
+    OPENBRACK       reduce using rule 63 (empty -> .)
+    IF              reduce using rule 63 (empty -> .)
+    WHILE           reduce using rule 63 (empty -> .)
+    RETURN          reduce using rule 63 (empty -> .)
+    ID              reduce using rule 63 (empty -> .)
+    OPENPAR         reduce using rule 63 (empty -> .)
+    NUM             reduce using rule 63 (empty -> .)
+    INT             shift and go to state 7
+    VOID            shift and go to state 8
+
+    statement_list                 shift and go to state 34
+    var_declaration                shift and go to state 35
+    empty                          shift and go to state 36
+    type_specifier                 shift and go to state 37
+
+state 33
+
+    (19) local_declarations -> empty .
+
+    INT             reduce using rule 19 (local_declarations -> empty .)
+    VOID            reduce using rule 19 (local_declarations -> empty .)
+    CLOSEBRACK      reduce using rule 19 (local_declarations -> empty .)
+    SEMICOLON       reduce using rule 19 (local_declarations -> empty .)
+    OPENBRACK       reduce using rule 19 (local_declarations -> empty .)
+    IF              reduce using rule 19 (local_declarations -> empty .)
+    WHILE           reduce using rule 19 (local_declarations -> empty .)
+    RETURN          reduce using rule 19 (local_declarations -> empty .)
+    ID              reduce using rule 19 (local_declarations -> empty .)
+    OPENPAR         reduce using rule 19 (local_declarations -> empty .)
+    NUM             reduce using rule 19 (local_declarations -> empty .)
+
+
+state 34
+
+    (17) compound_stmt -> OPENBRACK local_declarations statement_list . CLOSEBRACK
+    (20) statement_list -> statement_list . statement
+    (22) statement -> . expression_stmt
+    (23) statement -> . compound_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (17) compound_stmt -> . OPENBRACK local_declarations statement_list CLOSEBRACK
+    (29) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement
+    (30) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE OPENPAR expression CLOSEPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    CLOSEBRACK      shift and go to state 38
+    SEMICOLON       shift and go to state 46
+    OPENBRACK       shift and go to state 28
+    IF              shift and go to state 47
+    WHILE           shift and go to state 49
+    RETURN          shift and go to state 50
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    statement                      shift and go to state 39
+    expression_stmt                shift and go to state 40
+    compound_stmt                  shift and go to state 41
+    selection_stmt                 shift and go to state 42
+    iteration_stmt                 shift and go to state 43
+    return_stmt                    shift and go to state 44
+    expression                     shift and go to state 45
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 35
+
+    (18) local_declarations -> local_declarations var_declaration .
+
+    INT             reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    VOID            reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    CLOSEBRACK      reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    SEMICOLON       reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    OPENBRACK       reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    IF              reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    WHILE           reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    RETURN          reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    ID              reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    OPENPAR         reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+    NUM             reduce using rule 18 (local_declarations -> local_declarations var_declaration .)
+
+
+state 36
+
+    (21) statement_list -> empty .
+
+    CLOSEBRACK      reduce using rule 21 (statement_list -> empty .)
+    SEMICOLON       reduce using rule 21 (statement_list -> empty .)
+    OPENBRACK       reduce using rule 21 (statement_list -> empty .)
+    IF              reduce using rule 21 (statement_list -> empty .)
+    WHILE           reduce using rule 21 (statement_list -> empty .)
+    RETURN          reduce using rule 21 (statement_list -> empty .)
+    ID              reduce using rule 21 (statement_list -> empty .)
+    OPENPAR         reduce using rule 21 (statement_list -> empty .)
+    NUM             reduce using rule 21 (statement_list -> empty .)
+
+
+state 37
+
+    (6) var_declaration -> type_specifier . ID SEMICOLON
+    (7) var_declaration -> type_specifier . OPENBRACKSQ ID NUM CLOSEBRACKSQ SEMICOLON
+
+    ID              shift and go to state 59
+    OPENBRACKSQ     shift and go to state 12
+
+
+state 38
+
+    (17) compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .
+
+    ENDFILE         reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    INT             reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    VOID            reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    CLOSEBRACK      reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    SEMICOLON       reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    OPENBRACK       reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    IF              reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    WHILE           reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    RETURN          reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    ID              reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    OPENPAR         reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    NUM             reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+    ELSE            reduce using rule 17 (compound_stmt -> OPENBRACK local_declarations statement_list CLOSEBRACK .)
+
+
+state 39
+
+    (20) statement_list -> statement_list statement .
+
+    CLOSEBRACK      reduce using rule 20 (statement_list -> statement_list statement .)
+    SEMICOLON       reduce using rule 20 (statement_list -> statement_list statement .)
+    OPENBRACK       reduce using rule 20 (statement_list -> statement_list statement .)
+    IF              reduce using rule 20 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 20 (statement_list -> statement_list statement .)
+    RETURN          reduce using rule 20 (statement_list -> statement_list statement .)
+    ID              reduce using rule 20 (statement_list -> statement_list statement .)
+    OPENPAR         reduce using rule 20 (statement_list -> statement_list statement .)
+    NUM             reduce using rule 20 (statement_list -> statement_list statement .)
+
+
+state 40
+
+    (22) statement -> expression_stmt .
+
+    CLOSEBRACK      reduce using rule 22 (statement -> expression_stmt .)
+    SEMICOLON       reduce using rule 22 (statement -> expression_stmt .)
+    OPENBRACK       reduce using rule 22 (statement -> expression_stmt .)
+    IF              reduce using rule 22 (statement -> expression_stmt .)
+    WHILE           reduce using rule 22 (statement -> expression_stmt .)
+    RETURN          reduce using rule 22 (statement -> expression_stmt .)
+    ID              reduce using rule 22 (statement -> expression_stmt .)
+    OPENPAR         reduce using rule 22 (statement -> expression_stmt .)
+    NUM             reduce using rule 22 (statement -> expression_stmt .)
+    ELSE            reduce using rule 22 (statement -> expression_stmt .)
+
+
+state 41
+
+    (23) statement -> compound_stmt .
+
+    CLOSEBRACK      reduce using rule 23 (statement -> compound_stmt .)
+    SEMICOLON       reduce using rule 23 (statement -> compound_stmt .)
+    OPENBRACK       reduce using rule 23 (statement -> compound_stmt .)
+    IF              reduce using rule 23 (statement -> compound_stmt .)
+    WHILE           reduce using rule 23 (statement -> compound_stmt .)
+    RETURN          reduce using rule 23 (statement -> compound_stmt .)
+    ID              reduce using rule 23 (statement -> compound_stmt .)
+    OPENPAR         reduce using rule 23 (statement -> compound_stmt .)
+    NUM             reduce using rule 23 (statement -> compound_stmt .)
+    ELSE            reduce using rule 23 (statement -> compound_stmt .)
+
+
+state 42
+
+    (24) statement -> selection_stmt .
+
+    CLOSEBRACK      reduce using rule 24 (statement -> selection_stmt .)
+    SEMICOLON       reduce using rule 24 (statement -> selection_stmt .)
+    OPENBRACK       reduce using rule 24 (statement -> selection_stmt .)
+    IF              reduce using rule 24 (statement -> selection_stmt .)
+    WHILE           reduce using rule 24 (statement -> selection_stmt .)
+    RETURN          reduce using rule 24 (statement -> selection_stmt .)
+    ID              reduce using rule 24 (statement -> selection_stmt .)
+    OPENPAR         reduce using rule 24 (statement -> selection_stmt .)
+    NUM             reduce using rule 24 (statement -> selection_stmt .)
+    ELSE            reduce using rule 24 (statement -> selection_stmt .)
+
+
+state 43
+
+    (25) statement -> iteration_stmt .
+
+    CLOSEBRACK      reduce using rule 25 (statement -> iteration_stmt .)
+    SEMICOLON       reduce using rule 25 (statement -> iteration_stmt .)
+    OPENBRACK       reduce using rule 25 (statement -> iteration_stmt .)
+    IF              reduce using rule 25 (statement -> iteration_stmt .)
+    WHILE           reduce using rule 25 (statement -> iteration_stmt .)
+    RETURN          reduce using rule 25 (statement -> iteration_stmt .)
+    ID              reduce using rule 25 (statement -> iteration_stmt .)
+    OPENPAR         reduce using rule 25 (statement -> iteration_stmt .)
+    NUM             reduce using rule 25 (statement -> iteration_stmt .)
+    ELSE            reduce using rule 25 (statement -> iteration_stmt .)
+
+
+state 44
+
+    (26) statement -> return_stmt .
+
+    CLOSEBRACK      reduce using rule 26 (statement -> return_stmt .)
+    SEMICOLON       reduce using rule 26 (statement -> return_stmt .)
+    OPENBRACK       reduce using rule 26 (statement -> return_stmt .)
+    IF              reduce using rule 26 (statement -> return_stmt .)
+    WHILE           reduce using rule 26 (statement -> return_stmt .)
+    RETURN          reduce using rule 26 (statement -> return_stmt .)
+    ID              reduce using rule 26 (statement -> return_stmt .)
+    OPENPAR         reduce using rule 26 (statement -> return_stmt .)
+    NUM             reduce using rule 26 (statement -> return_stmt .)
+    ELSE            reduce using rule 26 (statement -> return_stmt .)
+
+
+state 45
+
+    (27) expression_stmt -> expression . SEMICOLON
+
+    SEMICOLON       shift and go to state 60
+
+
+state 46
+
+    (28) expression_stmt -> SEMICOLON .
+
+    CLOSEBRACK      reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    SEMICOLON       reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    OPENBRACK       reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    IF              reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    WHILE           reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    RETURN          reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    ID              reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    OPENPAR         reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    NUM             reduce using rule 28 (expression_stmt -> SEMICOLON .)
+    ELSE            reduce using rule 28 (expression_stmt -> SEMICOLON .)
+
+
+state 47
+
+    (29) selection_stmt -> IF . OPENPAR expression CLOSEPAR statement
+    (30) selection_stmt -> IF . OPENPAR expression CLOSEPAR statement ELSE statement
+
+    OPENPAR         shift and go to state 61
+
+
+state 48
+
+    (54) factor -> OPENPAR . expression CLOSEPAR
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 62
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 49
+
+    (31) iteration_stmt -> WHILE . OPENPAR expression CLOSEPAR statement
+
+    OPENPAR         shift and go to state 63
+
+
+state 50
+
+    (32) return_stmt -> RETURN . SEMICOLON
+    (33) return_stmt -> RETURN . expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    SEMICOLON       shift and go to state 64
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 65
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 51
+
+    (34) expression -> var . ASSIGN expression
+    (55) factor -> var .
+
+    ASSIGN          shift and go to state 66
+    MULTIPLY        reduce using rule 55 (factor -> var .)
+    DIVIDE          reduce using rule 55 (factor -> var .)
+    LESSOREQUAL     reduce using rule 55 (factor -> var .)
+    LESS            reduce using rule 55 (factor -> var .)
+    MORE            reduce using rule 55 (factor -> var .)
+    MOREOREQUAL     reduce using rule 55 (factor -> var .)
+    EQUALS          reduce using rule 55 (factor -> var .)
+    DIFFERENT       reduce using rule 55 (factor -> var .)
+    PLUS            reduce using rule 55 (factor -> var .)
+    MINUS           reduce using rule 55 (factor -> var .)
+    SEMICOLON       reduce using rule 55 (factor -> var .)
+    CLOSEPAR        reduce using rule 55 (factor -> var .)
+    CLOSEBRACKSQ    reduce using rule 55 (factor -> var .)
+    COMMA           reduce using rule 55 (factor -> var .)
+
+
+state 52
+
+    (35) expression -> simple_expression .
+
+    SEMICOLON       reduce using rule 35 (expression -> simple_expression .)
+    CLOSEPAR        reduce using rule 35 (expression -> simple_expression .)
+    CLOSEBRACKSQ    reduce using rule 35 (expression -> simple_expression .)
+    COMMA           reduce using rule 35 (expression -> simple_expression .)
+
+
+state 53
+
+    (36) var -> ID .
+    (37) var -> ID . OPENBRACKSQ expression CLOSEBRACKSQ
+    (58) call -> ID . OPENPAR args CLOSEPAR
+
+    ASSIGN          reduce using rule 36 (var -> ID .)
+    MULTIPLY        reduce using rule 36 (var -> ID .)
+    DIVIDE          reduce using rule 36 (var -> ID .)
+    LESSOREQUAL     reduce using rule 36 (var -> ID .)
+    LESS            reduce using rule 36 (var -> ID .)
+    MORE            reduce using rule 36 (var -> ID .)
+    MOREOREQUAL     reduce using rule 36 (var -> ID .)
+    EQUALS          reduce using rule 36 (var -> ID .)
+    DIFFERENT       reduce using rule 36 (var -> ID .)
+    PLUS            reduce using rule 36 (var -> ID .)
+    MINUS           reduce using rule 36 (var -> ID .)
+    SEMICOLON       reduce using rule 36 (var -> ID .)
+    CLOSEPAR        reduce using rule 36 (var -> ID .)
+    CLOSEBRACKSQ    reduce using rule 36 (var -> ID .)
+    COMMA           reduce using rule 36 (var -> ID .)
+    OPENBRACKSQ     shift and go to state 67
+    OPENPAR         shift and go to state 68
+
+
+state 54
+
+    (38) simple_expression -> additive_expression . relop additive_expression
+    (39) simple_expression -> additive_expression .
+    (46) additive_expression -> additive_expression . addop term
+    (40) relop -> . LESSOREQUAL
+    (41) relop -> . LESS
+    (42) relop -> . MORE
+    (43) relop -> . MOREOREQUAL
+    (44) relop -> . EQUALS
+    (45) relop -> . DIFFERENT
+    (48) addop -> . PLUS
+    (49) addop -> . MINUS
+
+    SEMICOLON       reduce using rule 39 (simple_expression -> additive_expression .)
+    CLOSEPAR        reduce using rule 39 (simple_expression -> additive_expression .)
+    CLOSEBRACKSQ    reduce using rule 39 (simple_expression -> additive_expression .)
+    COMMA           reduce using rule 39 (simple_expression -> additive_expression .)
+    LESSOREQUAL     shift and go to state 71
+    LESS            shift and go to state 72
+    MORE            shift and go to state 73
+    MOREOREQUAL     shift and go to state 74
+    EQUALS          shift and go to state 75
+    DIFFERENT       shift and go to state 76
+    PLUS            shift and go to state 77
+    MINUS           shift and go to state 78
+
+    relop                          shift and go to state 69
+    addop                          shift and go to state 70
+
+state 55
+
+    (47) additive_expression -> term .
+    (50) term -> term . mulop factor
+    (52) mulop -> . MULTIPLY
+    (53) mulop -> . DIVIDE
+
+    LESSOREQUAL     reduce using rule 47 (additive_expression -> term .)
+    LESS            reduce using rule 47 (additive_expression -> term .)
+    MORE            reduce using rule 47 (additive_expression -> term .)
+    MOREOREQUAL     reduce using rule 47 (additive_expression -> term .)
+    EQUALS          reduce using rule 47 (additive_expression -> term .)
+    DIFFERENT       reduce using rule 47 (additive_expression -> term .)
+    PLUS            reduce using rule 47 (additive_expression -> term .)
+    MINUS           reduce using rule 47 (additive_expression -> term .)
+    SEMICOLON       reduce using rule 47 (additive_expression -> term .)
+    CLOSEPAR        reduce using rule 47 (additive_expression -> term .)
+    CLOSEBRACKSQ    reduce using rule 47 (additive_expression -> term .)
+    COMMA           reduce using rule 47 (additive_expression -> term .)
+    MULTIPLY        shift and go to state 80
+    DIVIDE          shift and go to state 81
+
+    mulop                          shift and go to state 79
+
+state 56
+
+    (51) term -> factor .
+
+    MULTIPLY        reduce using rule 51 (term -> factor .)
+    DIVIDE          reduce using rule 51 (term -> factor .)
+    LESSOREQUAL     reduce using rule 51 (term -> factor .)
+    LESS            reduce using rule 51 (term -> factor .)
+    MORE            reduce using rule 51 (term -> factor .)
+    MOREOREQUAL     reduce using rule 51 (term -> factor .)
+    EQUALS          reduce using rule 51 (term -> factor .)
+    DIFFERENT       reduce using rule 51 (term -> factor .)
+    PLUS            reduce using rule 51 (term -> factor .)
+    MINUS           reduce using rule 51 (term -> factor .)
+    SEMICOLON       reduce using rule 51 (term -> factor .)
+    CLOSEPAR        reduce using rule 51 (term -> factor .)
+    CLOSEBRACKSQ    reduce using rule 51 (term -> factor .)
+    COMMA           reduce using rule 51 (term -> factor .)
+
+
+state 57
+
+    (56) factor -> call .
+
+    MULTIPLY        reduce using rule 56 (factor -> call .)
+    DIVIDE          reduce using rule 56 (factor -> call .)
+    LESSOREQUAL     reduce using rule 56 (factor -> call .)
+    LESS            reduce using rule 56 (factor -> call .)
+    MORE            reduce using rule 56 (factor -> call .)
+    MOREOREQUAL     reduce using rule 56 (factor -> call .)
+    EQUALS          reduce using rule 56 (factor -> call .)
+    DIFFERENT       reduce using rule 56 (factor -> call .)
+    PLUS            reduce using rule 56 (factor -> call .)
+    MINUS           reduce using rule 56 (factor -> call .)
+    SEMICOLON       reduce using rule 56 (factor -> call .)
+    CLOSEPAR        reduce using rule 56 (factor -> call .)
+    CLOSEBRACKSQ    reduce using rule 56 (factor -> call .)
+    COMMA           reduce using rule 56 (factor -> call .)
+
+
+state 58
+
+    (57) factor -> NUM .
+
+    MULTIPLY        reduce using rule 57 (factor -> NUM .)
+    DIVIDE          reduce using rule 57 (factor -> NUM .)
+    LESSOREQUAL     reduce using rule 57 (factor -> NUM .)
+    LESS            reduce using rule 57 (factor -> NUM .)
+    MORE            reduce using rule 57 (factor -> NUM .)
+    MOREOREQUAL     reduce using rule 57 (factor -> NUM .)
+    EQUALS          reduce using rule 57 (factor -> NUM .)
+    DIFFERENT       reduce using rule 57 (factor -> NUM .)
+    PLUS            reduce using rule 57 (factor -> NUM .)
+    MINUS           reduce using rule 57 (factor -> NUM .)
+    SEMICOLON       reduce using rule 57 (factor -> NUM .)
+    CLOSEPAR        reduce using rule 57 (factor -> NUM .)
+    CLOSEBRACKSQ    reduce using rule 57 (factor -> NUM .)
+    COMMA           reduce using rule 57 (factor -> NUM .)
+
+
+state 59
+
+    (6) var_declaration -> type_specifier ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 14
+
+
+state 60
+
+    (27) expression_stmt -> expression SEMICOLON .
+
+    CLOSEBRACK      reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    SEMICOLON       reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    OPENBRACK       reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    IF              reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    WHILE           reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    RETURN          reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    ID              reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    OPENPAR         reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    NUM             reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+    ELSE            reduce using rule 27 (expression_stmt -> expression SEMICOLON .)
+
+
+state 61
+
+    (29) selection_stmt -> IF OPENPAR . expression CLOSEPAR statement
+    (30) selection_stmt -> IF OPENPAR . expression CLOSEPAR statement ELSE statement
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 82
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 62
+
+    (54) factor -> OPENPAR expression . CLOSEPAR
+
+    CLOSEPAR        shift and go to state 83
+
+
+state 63
+
+    (31) iteration_stmt -> WHILE OPENPAR . expression CLOSEPAR statement
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 84
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 64
+
+    (32) return_stmt -> RETURN SEMICOLON .
+
+    CLOSEBRACK      reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    SEMICOLON       reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    OPENBRACK       reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    IF              reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    WHILE           reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    RETURN          reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    ID              reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    OPENPAR         reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    NUM             reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+    ELSE            reduce using rule 32 (return_stmt -> RETURN SEMICOLON .)
+
+
+state 65
+
+    (33) return_stmt -> RETURN expression . SEMICOLON
+
+    SEMICOLON       shift and go to state 85
+
+
+state 66
+
+    (34) expression -> var ASSIGN . expression
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    var                            shift and go to state 51
+    expression                     shift and go to state 86
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 67
+
+    (37) var -> ID OPENBRACKSQ . expression CLOSEBRACKSQ
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 87
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 68
+
+    (58) call -> ID OPENPAR . args CLOSEPAR
+    (59) args -> . arg_list
+    (60) args -> . empty
+    (61) arg_list -> . arg_list COMMA expression
+    (62) arg_list -> . expression
+    (63) empty -> .
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    CLOSEPAR        reduce using rule 63 (empty -> .)
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    args                           shift and go to state 88
+    arg_list                       shift and go to state 89
+    empty                          shift and go to state 90
+    expression                     shift and go to state 91
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 69
+
+    (38) simple_expression -> additive_expression relop . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+    ID              shift and go to state 53
+
+    additive_expression            shift and go to state 92
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    var                            shift and go to state 93
+    call                           shift and go to state 57
+
+state 70
+
+    (46) additive_expression -> additive_expression addop . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+    ID              shift and go to state 53
+
+    term                           shift and go to state 94
+    factor                         shift and go to state 56
+    var                            shift and go to state 93
+    call                           shift and go to state 57
+
+state 71
+
+    (40) relop -> LESSOREQUAL .
+
+    OPENPAR         reduce using rule 40 (relop -> LESSOREQUAL .)
+    NUM             reduce using rule 40 (relop -> LESSOREQUAL .)
+    ID              reduce using rule 40 (relop -> LESSOREQUAL .)
+
+
+state 72
+
+    (41) relop -> LESS .
+
+    OPENPAR         reduce using rule 41 (relop -> LESS .)
+    NUM             reduce using rule 41 (relop -> LESS .)
+    ID              reduce using rule 41 (relop -> LESS .)
+
+
+state 73
+
+    (42) relop -> MORE .
+
+    OPENPAR         reduce using rule 42 (relop -> MORE .)
+    NUM             reduce using rule 42 (relop -> MORE .)
+    ID              reduce using rule 42 (relop -> MORE .)
+
+
+state 74
+
+    (43) relop -> MOREOREQUAL .
+
+    OPENPAR         reduce using rule 43 (relop -> MOREOREQUAL .)
+    NUM             reduce using rule 43 (relop -> MOREOREQUAL .)
+    ID              reduce using rule 43 (relop -> MOREOREQUAL .)
+
+
+state 75
+
+    (44) relop -> EQUALS .
+
+    OPENPAR         reduce using rule 44 (relop -> EQUALS .)
+    NUM             reduce using rule 44 (relop -> EQUALS .)
+    ID              reduce using rule 44 (relop -> EQUALS .)
+
+
+state 76
+
+    (45) relop -> DIFFERENT .
+
+    OPENPAR         reduce using rule 45 (relop -> DIFFERENT .)
+    NUM             reduce using rule 45 (relop -> DIFFERENT .)
+    ID              reduce using rule 45 (relop -> DIFFERENT .)
+
+
+state 77
+
+    (48) addop -> PLUS .
+
+    OPENPAR         reduce using rule 48 (addop -> PLUS .)
+    NUM             reduce using rule 48 (addop -> PLUS .)
+    ID              reduce using rule 48 (addop -> PLUS .)
+
+
+state 78
+
+    (49) addop -> MINUS .
+
+    OPENPAR         reduce using rule 49 (addop -> MINUS .)
+    NUM             reduce using rule 49 (addop -> MINUS .)
+    ID              reduce using rule 49 (addop -> MINUS .)
+
+
+state 79
+
+    (50) term -> term mulop . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+    ID              shift and go to state 53
+
+    factor                         shift and go to state 95
+    var                            shift and go to state 93
+    call                           shift and go to state 57
+
+state 80
+
+    (52) mulop -> MULTIPLY .
+
+    OPENPAR         reduce using rule 52 (mulop -> MULTIPLY .)
+    NUM             reduce using rule 52 (mulop -> MULTIPLY .)
+    ID              reduce using rule 52 (mulop -> MULTIPLY .)
+
+
+state 81
+
+    (53) mulop -> DIVIDE .
+
+    OPENPAR         reduce using rule 53 (mulop -> DIVIDE .)
+    NUM             reduce using rule 53 (mulop -> DIVIDE .)
+    ID              reduce using rule 53 (mulop -> DIVIDE .)
+
+
+state 82
+
+    (29) selection_stmt -> IF OPENPAR expression . CLOSEPAR statement
+    (30) selection_stmt -> IF OPENPAR expression . CLOSEPAR statement ELSE statement
+
+    CLOSEPAR        shift and go to state 96
+
+
+state 83
+
+    (54) factor -> OPENPAR expression CLOSEPAR .
+
+    MULTIPLY        reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    DIVIDE          reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    LESSOREQUAL     reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    LESS            reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    MORE            reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    MOREOREQUAL     reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    EQUALS          reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    DIFFERENT       reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    PLUS            reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    MINUS           reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    SEMICOLON       reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    CLOSEPAR        reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    CLOSEBRACKSQ    reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+    COMMA           reduce using rule 54 (factor -> OPENPAR expression CLOSEPAR .)
+
+
+state 84
+
+    (31) iteration_stmt -> WHILE OPENPAR expression . CLOSEPAR statement
+
+    CLOSEPAR        shift and go to state 97
+
+
+state 85
+
+    (33) return_stmt -> RETURN expression SEMICOLON .
+
+    CLOSEBRACK      reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    SEMICOLON       reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    OPENBRACK       reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    IF              reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    WHILE           reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    RETURN          reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    ID              reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    OPENPAR         reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    NUM             reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+    ELSE            reduce using rule 33 (return_stmt -> RETURN expression SEMICOLON .)
+
+
+state 86
+
+    (34) expression -> var ASSIGN expression .
+
+    SEMICOLON       reduce using rule 34 (expression -> var ASSIGN expression .)
+    CLOSEPAR        reduce using rule 34 (expression -> var ASSIGN expression .)
+    CLOSEBRACKSQ    reduce using rule 34 (expression -> var ASSIGN expression .)
+    COMMA           reduce using rule 34 (expression -> var ASSIGN expression .)
+
+
+state 87
+
+    (37) var -> ID OPENBRACKSQ expression . CLOSEBRACKSQ
+
+    CLOSEBRACKSQ    shift and go to state 98
+
+
+state 88
+
+    (58) call -> ID OPENPAR args . CLOSEPAR
+
+    CLOSEPAR        shift and go to state 99
+
+
+state 89
+
+    (59) args -> arg_list .
+    (61) arg_list -> arg_list . COMMA expression
+
+    CLOSEPAR        reduce using rule 59 (args -> arg_list .)
+    COMMA           shift and go to state 100
+
+
+state 90
+
+    (60) args -> empty .
+
+    CLOSEPAR        reduce using rule 60 (args -> empty .)
+
+
+state 91
+
+    (62) arg_list -> expression .
+
+    COMMA           reduce using rule 62 (arg_list -> expression .)
+    CLOSEPAR        reduce using rule 62 (arg_list -> expression .)
+
+
+state 92
+
+    (38) simple_expression -> additive_expression relop additive_expression .
+    (46) additive_expression -> additive_expression . addop term
+    (48) addop -> . PLUS
+    (49) addop -> . MINUS
+
+    SEMICOLON       reduce using rule 38 (simple_expression -> additive_expression relop additive_expression .)
+    CLOSEPAR        reduce using rule 38 (simple_expression -> additive_expression relop additive_expression .)
+    CLOSEBRACKSQ    reduce using rule 38 (simple_expression -> additive_expression relop additive_expression .)
+    COMMA           reduce using rule 38 (simple_expression -> additive_expression relop additive_expression .)
+    PLUS            shift and go to state 77
+    MINUS           shift and go to state 78
+
+    addop                          shift and go to state 70
+
+state 93
+
+    (55) factor -> var .
+
+    MULTIPLY        reduce using rule 55 (factor -> var .)
+    DIVIDE          reduce using rule 55 (factor -> var .)
+    PLUS            reduce using rule 55 (factor -> var .)
+    MINUS           reduce using rule 55 (factor -> var .)
+    SEMICOLON       reduce using rule 55 (factor -> var .)
+    CLOSEPAR        reduce using rule 55 (factor -> var .)
+    CLOSEBRACKSQ    reduce using rule 55 (factor -> var .)
+    COMMA           reduce using rule 55 (factor -> var .)
+    LESSOREQUAL     reduce using rule 55 (factor -> var .)
+    LESS            reduce using rule 55 (factor -> var .)
+    MORE            reduce using rule 55 (factor -> var .)
+    MOREOREQUAL     reduce using rule 55 (factor -> var .)
+    EQUALS          reduce using rule 55 (factor -> var .)
+    DIFFERENT       reduce using rule 55 (factor -> var .)
+
+
+state 94
+
+    (46) additive_expression -> additive_expression addop term .
+    (50) term -> term . mulop factor
+    (52) mulop -> . MULTIPLY
+    (53) mulop -> . DIVIDE
+
+    LESSOREQUAL     reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    LESS            reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    MORE            reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    MOREOREQUAL     reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    EQUALS          reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    DIFFERENT       reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    PLUS            reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    MINUS           reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    SEMICOLON       reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    CLOSEPAR        reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    CLOSEBRACKSQ    reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    COMMA           reduce using rule 46 (additive_expression -> additive_expression addop term .)
+    MULTIPLY        shift and go to state 80
+    DIVIDE          shift and go to state 81
+
+    mulop                          shift and go to state 79
+
+state 95
+
+    (50) term -> term mulop factor .
+
+    MULTIPLY        reduce using rule 50 (term -> term mulop factor .)
+    DIVIDE          reduce using rule 50 (term -> term mulop factor .)
+    LESSOREQUAL     reduce using rule 50 (term -> term mulop factor .)
+    LESS            reduce using rule 50 (term -> term mulop factor .)
+    MORE            reduce using rule 50 (term -> term mulop factor .)
+    MOREOREQUAL     reduce using rule 50 (term -> term mulop factor .)
+    EQUALS          reduce using rule 50 (term -> term mulop factor .)
+    DIFFERENT       reduce using rule 50 (term -> term mulop factor .)
+    PLUS            reduce using rule 50 (term -> term mulop factor .)
+    MINUS           reduce using rule 50 (term -> term mulop factor .)
+    SEMICOLON       reduce using rule 50 (term -> term mulop factor .)
+    CLOSEPAR        reduce using rule 50 (term -> term mulop factor .)
+    CLOSEBRACKSQ    reduce using rule 50 (term -> term mulop factor .)
+    COMMA           reduce using rule 50 (term -> term mulop factor .)
+
+
+state 96
+
+    (29) selection_stmt -> IF OPENPAR expression CLOSEPAR . statement
+    (30) selection_stmt -> IF OPENPAR expression CLOSEPAR . statement ELSE statement
+    (22) statement -> . expression_stmt
+    (23) statement -> . compound_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (17) compound_stmt -> . OPENBRACK local_declarations statement_list CLOSEBRACK
+    (29) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement
+    (30) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE OPENPAR expression CLOSEPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    SEMICOLON       shift and go to state 46
+    OPENBRACK       shift and go to state 28
+    IF              shift and go to state 47
+    WHILE           shift and go to state 49
+    RETURN          shift and go to state 50
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 45
+    statement                      shift and go to state 101
+    expression_stmt                shift and go to state 40
+    compound_stmt                  shift and go to state 41
+    selection_stmt                 shift and go to state 42
+    iteration_stmt                 shift and go to state 43
+    return_stmt                    shift and go to state 44
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 97
+
+    (31) iteration_stmt -> WHILE OPENPAR expression CLOSEPAR . statement
+    (22) statement -> . expression_stmt
+    (23) statement -> . compound_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (17) compound_stmt -> . OPENBRACK local_declarations statement_list CLOSEBRACK
+    (29) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement
+    (30) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE OPENPAR expression CLOSEPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    SEMICOLON       shift and go to state 46
+    OPENBRACK       shift and go to state 28
+    IF              shift and go to state 47
+    WHILE           shift and go to state 49
+    RETURN          shift and go to state 50
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 45
+    statement                      shift and go to state 102
+    expression_stmt                shift and go to state 40
+    compound_stmt                  shift and go to state 41
+    selection_stmt                 shift and go to state 42
+    iteration_stmt                 shift and go to state 43
+    return_stmt                    shift and go to state 44
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 98
+
+    (37) var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .
+
+    ASSIGN          reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    MULTIPLY        reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    DIVIDE          reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    LESSOREQUAL     reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    LESS            reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    MORE            reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    MOREOREQUAL     reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    EQUALS          reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    DIFFERENT       reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    PLUS            reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    MINUS           reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    SEMICOLON       reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    CLOSEPAR        reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    CLOSEBRACKSQ    reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+    COMMA           reduce using rule 37 (var -> ID OPENBRACKSQ expression CLOSEBRACKSQ .)
+
+
+state 99
+
+    (58) call -> ID OPENPAR args CLOSEPAR .
+
+    MULTIPLY        reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    DIVIDE          reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    LESSOREQUAL     reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    LESS            reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    MORE            reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    MOREOREQUAL     reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    EQUALS          reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    DIFFERENT       reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    PLUS            reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    MINUS           reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    SEMICOLON       reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    CLOSEPAR        reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    CLOSEBRACKSQ    reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+    COMMA           reduce using rule 58 (call -> ID OPENPAR args CLOSEPAR .)
+
+
+state 100
+
+    (61) arg_list -> arg_list COMMA . expression
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 103
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 101
+
+    (29) selection_stmt -> IF OPENPAR expression CLOSEPAR statement .
+    (30) selection_stmt -> IF OPENPAR expression CLOSEPAR statement . ELSE statement
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    CLOSEBRACK      reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    SEMICOLON       reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    OPENBRACK       reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    IF              reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    WHILE           reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    RETURN          reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    ID              reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    OPENPAR         reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    NUM             reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .)
+    ELSE            shift and go to state 104
+
+  ! ELSE            [ reduce using rule 29 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement .) ]
+
+
+state 102
+
+    (31) iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .
+
+    CLOSEBRACK      reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    SEMICOLON       reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    OPENBRACK       reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    IF              reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    WHILE           reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    RETURN          reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    ID              reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    OPENPAR         reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    NUM             reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+    ELSE            reduce using rule 31 (iteration_stmt -> WHILE OPENPAR expression CLOSEPAR statement .)
+
+
+state 103
+
+    (61) arg_list -> arg_list COMMA expression .
+
+    COMMA           reduce using rule 61 (arg_list -> arg_list COMMA expression .)
+    CLOSEPAR        reduce using rule 61 (arg_list -> arg_list COMMA expression .)
+
+
+state 104
+
+    (30) selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE . statement
+    (22) statement -> . expression_stmt
+    (23) statement -> . compound_stmt
+    (24) statement -> . selection_stmt
+    (25) statement -> . iteration_stmt
+    (26) statement -> . return_stmt
+    (27) expression_stmt -> . expression SEMICOLON
+    (28) expression_stmt -> . SEMICOLON
+    (17) compound_stmt -> . OPENBRACK local_declarations statement_list CLOSEBRACK
+    (29) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement
+    (30) selection_stmt -> . IF OPENPAR expression CLOSEPAR statement ELSE statement
+    (31) iteration_stmt -> . WHILE OPENPAR expression CLOSEPAR statement
+    (32) return_stmt -> . RETURN SEMICOLON
+    (33) return_stmt -> . RETURN expression SEMICOLON
+    (34) expression -> . var ASSIGN expression
+    (35) expression -> . simple_expression
+    (36) var -> . ID
+    (37) var -> . ID OPENBRACKSQ expression CLOSEBRACKSQ
+    (38) simple_expression -> . additive_expression relop additive_expression
+    (39) simple_expression -> . additive_expression
+    (46) additive_expression -> . additive_expression addop term
+    (47) additive_expression -> . term
+    (50) term -> . term mulop factor
+    (51) term -> . factor
+    (54) factor -> . OPENPAR expression CLOSEPAR
+    (55) factor -> . var
+    (56) factor -> . call
+    (57) factor -> . NUM
+    (58) call -> . ID OPENPAR args CLOSEPAR
+
+    SEMICOLON       shift and go to state 46
+    OPENBRACK       shift and go to state 28
+    IF              shift and go to state 47
+    WHILE           shift and go to state 49
+    RETURN          shift and go to state 50
+    ID              shift and go to state 53
+    OPENPAR         shift and go to state 48
+    NUM             shift and go to state 58
+
+    expression                     shift and go to state 45
+    statement                      shift and go to state 105
+    expression_stmt                shift and go to state 40
+    compound_stmt                  shift and go to state 41
+    selection_stmt                 shift and go to state 42
+    iteration_stmt                 shift and go to state 43
+    return_stmt                    shift and go to state 44
+    var                            shift and go to state 51
+    simple_expression              shift and go to state 52
+    additive_expression            shift and go to state 54
+    term                           shift and go to state 55
+    factor                         shift and go to state 56
+    call                           shift and go to state 57
+
+state 105
+
+    (30) selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .
+
+    CLOSEBRACK      reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    SEMICOLON       reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    OPENBRACK       reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    IF              reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    WHILE           reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    RETURN          reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    ID              reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    OPENPAR         reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    NUM             reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+    ELSE            reduce using rule 30 (selection_stmt -> IF OPENPAR expression CLOSEPAR statement ELSE statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ELSE in state 101 resolved as shift
